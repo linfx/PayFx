@@ -1,8 +1,8 @@
-﻿using PaySharp.Alipay;
-using PaySharp.Alipay.Domain;
-using PaySharp.Alipay.Request;
-using PaySharp.Core;
-using PaySharp.Core.Response;
+﻿using PayFx.Alipay;
+using PayFx.Alipay.Domain;
+using PayFx.Alipay.Request;
+using PayFx;
+using PayFx.Response;
 #if NETCOREAPP
 using Microsoft.AspNetCore.Mvc;
 #else
@@ -11,7 +11,7 @@ using System.Web.Mvc;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PaySharp.Demo.Controllers
+namespace PayFx.Demo.Controllers
 {
     public class AlipayController : Controller
     {

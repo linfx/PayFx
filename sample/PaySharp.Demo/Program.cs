@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace PaySharp.Demo
+namespace PayFx.Demo
 {
     public class Program
     {

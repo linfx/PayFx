@@ -1,4 +1,4 @@
-namespace PaySharp.Demo.Models
+namespace PayFx.Demo.Models
 {
     public class ErrorViewModel
     {

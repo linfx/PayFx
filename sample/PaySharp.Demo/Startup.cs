@@ -5,11 +5,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PaySharp.Alipay;
-using PaySharp.Allinpay;
-using PaySharp.Unionpay;
+using PayFx.Alipay;
 
-namespace PaySharp.Demo
+namespace PayFx.Demo
 {
     public class Startup
     {
@@ -62,49 +60,49 @@ namespace PaySharp.Demo
                     NotifyUrl = "http://localhost:61377/Notify"
                 };
 
-                var unionpayMerchant = new Unionpay.Merchant
-                {
-                    AppId = "777290058110048",
-                    CertPwd = "000000",
-                    CertPath = "Certs/acp_test_sign.pfx",
-                    NotifyUrl = "http://localhost:61377/Notify",
-                    ReturnUrl = "http://localhost:61377/Notify"
-                };
+                //var unionpayMerchant = new Unionpay.Merchant
+                //{
+                //    AppId = "777290058110048",
+                //    CertPwd = "000000",
+                //    CertPath = "Certs/acp_test_sign.pfx",
+                //    NotifyUrl = "http://localhost:61377/Notify",
+                //    ReturnUrl = "http://localhost:61377/Notify"
+                //};
 
-                var allinpayMerchant = new Allinpay.Merchant
-                {
-                    AppId = "00000051",
-                    MchId = "990581007426001",
-                    Key = "allinpay888",
-                    NotifyUrl = "http://localhost:61337/Notify"
-                };
+                //var allinpayMerchant = new Allinpay.Merchant
+                //{
+                //    AppId = "00000051",
+                //    MchId = "990581007426001",
+                //    Key = "allinpay888",
+                //    NotifyUrl = "http://localhost:61337/Notify"
+                //};
 
                 a.Add(new AlipayGateway(alipayMerchant)
                 {
                     GatewayUrl = "https://openapi.alipaydev.com"
                 });
                 //a.Add(new WechatpayGateway(wechatpayMerchant));
-                a.Add(new UnionpayGateway(unionpayMerchant)
-                {
-                    GatewayUrl = "https://gateway.test.95516.com"
-                });
-                a.Add(new AllinpayGateway(allinpayMerchant)
-                {
-                    GatewayUrl = "https://test.allinpaygd.com"
-                });
+                //a.Add(new UnionpayGateway(unionpayMerchant)
+                //{
+                //    GatewayUrl = "https://gateway.test.95516.com"
+                //});
+                //a.Add(new AllinpayGateway(allinpayMerchant)
+                //{
+                //    GatewayUrl = "https://test.allinpaygd.com"
+                //});
 
                 //a.UseAlipay(Configuration);
-                a.UseWechatpay(Configuration);
-                //a.UseUnionpay(Configuration);
-                a.UseQpay(opt =>
-                {
-                    opt.AppId = "100619284";
-                    opt.MchId = "1900000109";
-                    opt.Key = "8934e7d15453e97507ef794cf7b0519d";
-                    opt.SslCertPath = "Certs/1900000109_532398_new.pfx";
-                    opt.SslCertPassword = "532398";
-                    opt.NotifyUrl = "http://localhost:61377/Notify";
-                });
+                //a.UseWechatpay(Configuration);
+                ////a.UseUnionpay(Configuration);
+                //a.UseQpay(opt =>
+                //{
+                //    opt.AppId = "100619284";
+                //    opt.MchId = "1900000109";
+                //    opt.Key = "8934e7d15453e97507ef794cf7b0519d";
+                //    opt.SslCertPath = "Certs/1900000109_532398_new.pfx";
+                //    opt.SslCertPassword = "532398";
+                //    opt.NotifyUrl = "http://localhost:61377/Notify";
+                //});
             });
         }
 

@@ -5,6 +5,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PaySharp.Core\PaySharp.Core.csproj" />
+    <ProjectReference Include="..\PayFx\PayFx.csproj" />
   </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
-# PaySharp<img src="https://github.com/Varorbc/PaySharp/raw/master/logo.png" width="50px" height="50px">
+# PayFx<img src="https://github.com/Varorbc/PayFx/raw/master/logo.png" width="50px" height="50px">
 ---
 
-PaySharp是一个支持多商户多种支付方式的跨平台网关处理类库，使用PaySharp可以简化订单的创建、查询、退款和接收网关返回的支付通知等操作。
+PayFx是一个支持多商户多种支付方式的跨平台网关处理类库，使用PayFx可以简化订单的创建、查询、退款和接收网关返回的支付通知等操作。
 
 目前支持的支付网关有：支付宝(Alipay)、微信支付(Wechatpay)、中国银联(Unionpay)、QQ钱包支付(Qpay)、通联收银宝(Allinpay)
 
@@ -62,13 +62,13 @@ PaySharp是一个支持多商户多种支付方式的跨平台网关处理类库
 
 Package  | NuGet 
 -------- | :------------ 
-PaySharp.Core		| [![NuGet](https://img.shields.io/nuget/v/PaySharp.Core.svg)](https://www.nuget.org/packages/PaySharp.Core)
-PaySharp.Core.Mvc		| [![NuGet](https://img.shields.io/nuget/v/PaySharp.Core.Mvc.svg)](https://www.nuget.org/packages/PaySharp.Core.Mvc)
-PaySharp.Alipay		| [![NuGet](https://img.shields.io/nuget/v/PaySharp.Alipay.svg)](https://www.nuget.org/packages/PaySharp.Alipay)
-PaySharp.Wechatpay	| [![NuGet](https://img.shields.io/nuget/v/PaySharp.Wechatpay.svg)](https://www.nuget.org/packages/PaySharp.Wechatpay)
-PaySharp.Unionpay	| [![NuGet](https://img.shields.io/nuget/v/PaySharp.Unionpay.svg)](https://www.nuget.org/packages/PaySharp.Unionpay)
-PaySharp.Qpay	| [![NuGet](https://img.shields.io/nuget/v/PaySharp.Qpay.svg)](https://www.nuget.org/packages/PaySharp.Qpay)
-PaySharp.Allinpay	| [![NuGet](https://img.shields.io/nuget/v/PaySharp.Allinpay.svg)](https://www.nuget.org/packages/PaySharp.Allinpay)
+PayFx		| [![NuGet](https://img.shields.io/nuget/v/PayFx.svg)](https://www.nuget.org/packages/PayFx)
+PayFx.Mvc		| [![NuGet](https://img.shields.io/nuget/v/PayFx.Mvc.svg)](https://www.nuget.org/packages/PayFx.Mvc)
+PayFx.Alipay		| [![NuGet](https://img.shields.io/nuget/v/PayFx.Alipay.svg)](https://www.nuget.org/packages/PayFx.Alipay)
+PayFx.Wechatpay	| [![NuGet](https://img.shields.io/nuget/v/PayFx.Wechatpay.svg)](https://www.nuget.org/packages/PayFx.Wechatpay)
+PayFx.Unionpay	| [![NuGet](https://img.shields.io/nuget/v/PayFx.Unionpay.svg)](https://www.nuget.org/packages/PayFx.Unionpay)
+PayFx.Qpay	| [![NuGet](https://img.shields.io/nuget/v/PayFx.Qpay.svg)](https://www.nuget.org/packages/PayFx.Qpay)
+PayFx.Allinpay	| [![NuGet](https://img.shields.io/nuget/v/PayFx.Allinpay.svg)](https://www.nuget.org/packages/PayFx.Allinpay)
 
 # 开发环境
 * Windows 10
@@ -78,7 +78,7 @@ PaySharp.Allinpay	| [![NuGet](https://img.shields.io/nuget/v/PaySharp.Allinpay.s
 # 如何使用
 ---
 
-见[Demo](https://github.com/Varorbc/PaySharp/tree/master/sample/PaySharp.Demo)
+见[Demo](https://github.com/Varorbc/PayFx/tree/master/sample/PayFx.Demo)
 
 # 交流讨论
 ---
@@ -111,7 +111,7 @@ https://aipboss.allinpay.com/know/devhelp/index.php
 # 支持/打赏
 
 <p align="center">
-    <img src="https://github.com/Varorbc/PaySharp/raw/master/reward.jpg">
+    <img src="https://github.com/Varorbc/PayFx/raw/master/reward.jpg">
     <p align="center">打赏扫这里，请留下尊姓大名</p>
 </p>
 

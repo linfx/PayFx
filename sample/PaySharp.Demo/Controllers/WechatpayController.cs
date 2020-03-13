@@ -1,8 +1,8 @@
-﻿using PaySharp.Core;
-using PaySharp.Core.Response;
-using PaySharp.Wechatpay;
-using PaySharp.Wechatpay.Domain;
-using PaySharp.Wechatpay.Request;
+﻿using PayFx;
+using PayFx.Response;
+using PayFx.Wechatpay;
+using PayFx.Wechatpay.Domain;
+using PayFx.Wechatpay.Request;
 #if NETCOREAPP
 using Microsoft.AspNetCore.Mvc;
 #else
@@ -10,7 +10,7 @@ using System.Web.Mvc;
 #endif
 using System;
 
-namespace PaySharp.Demo.Controllers
+namespace PayFx.Demo.Controllers
 {
     public class WechatpayController : Controller
     {

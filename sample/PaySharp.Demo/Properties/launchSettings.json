@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "PaySharp.Demo": {
+    "PayFx.Demo": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

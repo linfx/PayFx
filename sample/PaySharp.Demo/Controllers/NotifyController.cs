@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 #else
 using System.Web.Mvc;
 #endif
-using PaySharp.Alipay.Response;
-using PaySharp.Core;
+using PayFx.Alipay.Response;
+using PayFx;
 using System.Threading.Tasks;
 
-namespace PaySharp.Demo.Controllers
+namespace PayFx.Demo.Controllers
 {
     public class NotifyController : Controller
     {
@@ -34,7 +34,7 @@ namespace PaySharp.Demo.Controllers
 
             if (isRedirect)
             {
-                Response.Redirect("https://github.com/Varorbc/PaySharp");
+                Response.Redirect("https://github.com/Varorbc/PayFx");
             }
         }
 

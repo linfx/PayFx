@@ -3,13 +3,12 @@
   <PropertyGroup>
     <Version>1.0.9</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageProjectUrl>https://github.com/Varorbc/PaySharp</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Varorbc/PayFx</PackageProjectUrl>
     <Authors>Varorbc</Authors>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/Varorbc/PaySharp</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Varorbc/PayFx</RepositoryUrl>
     <Copyright>Varorbc</Copyright>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>PaySharp.snk</AssemblyOriginatorKeyFile>
     <PackageIcon>logo.png</PackageIcon>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
@@ -23,8 +22,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
-  </ItemGroup>
-  
 </Project>

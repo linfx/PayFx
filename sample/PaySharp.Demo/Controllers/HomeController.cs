@@ -1,4 +1,4 @@
-﻿using PaySharp.Demo.Models;
+﻿using PayFx.Demo.Models;
 #if NETCOREAPP
 using Microsoft.AspNetCore.Mvc;
 #else
@@ -6,7 +6,7 @@ using System.Web.Mvc;
 #endif
 using System.Diagnostics;
 
-namespace PaySharp.Demo.Controllers
+namespace PayFx.Demo.Controllers
 {
     public class HomeController : Controller
     {
