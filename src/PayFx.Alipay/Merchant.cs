@@ -1,14 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using PayFx;
-using PayFx;
 
 namespace PayFx.Alipay
 {
     public class Merchant : IMerchant
     {
-        #region 属性
-
         /// <summary>
         /// 应用ID
         /// </summary>
@@ -79,7 +75,5 @@ namespace PayFx.Alipay
         /// 网关回发通知URL
         /// </summary>
         public string NotifyUrl { get; set; }
-
-        #endregion
     }
 }

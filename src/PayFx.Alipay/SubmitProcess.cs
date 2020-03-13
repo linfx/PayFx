@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PayFx.Alipay.Response;
-using PayFx;
 using PayFx.Exceptions;
 using PayFx.Request;
 using PayFx.Response;

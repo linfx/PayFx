@@ -1,18 +1,18 @@
 <Project>
 
   <PropertyGroup>
-    <Version>1.0.9</Version>
+    <Version>1.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageProjectUrl>https://github.com/Varorbc/PayFx</PackageProjectUrl>
-    <Authors>Varorbc</Authors>
+    <Authors>LinFx</Authors>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/Varorbc/PayFx</RepositoryUrl>
-    <Copyright>Varorbc</Copyright>
+    <Copyright>LinFx</Copyright>
     <SignAssembly>true</SignAssembly>
     <PackageIcon>logo.png</PackageIcon>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageProjectUrl>https://github.com/linfx/PayFx</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/linfx/PayFx</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
