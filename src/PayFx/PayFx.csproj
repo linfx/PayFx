@@ -4,6 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Description>PayFx是一个支持多商户多种支付方式的跨平台网关处理类库，使用PayFx可以简化订单的创建、查询、退款和接收网关返回的支付通知等操作。</Description>
   </PropertyGroup>
 
   <Import Project="../../output.props" />
