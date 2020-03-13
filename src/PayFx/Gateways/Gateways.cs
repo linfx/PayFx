@@ -9,32 +9,12 @@ namespace PayFx
     /// </summary>
     public class Gateways : IGateways
     {
-        #region 私有字段
-
-        private readonly ICollection<BaseGateway> _list;
-
-        #endregion
-
-        #region 属性
+        private readonly ICollection<BaseGateway> _list = new List<BaseGateway>();
 
         /// <summary>
         /// 网关数量
         /// </summary>
         public int Count => _list.Count;
-
-        #endregion
-
-        #region 构造函数
-
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        public Gateways()
-        {
-            _list = new List<BaseGateway>();
-        }
-
-        #endregion
 
         #region 方法
 

@@ -1,14 +1,9 @@
-﻿using PayFx;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using PayFx.Response;
 using PayFx.Wechatpay;
 using PayFx.Wechatpay.Domain;
 using PayFx.Wechatpay.Request;
-#if NETCOREAPP
-using Microsoft.AspNetCore.Mvc;
-#else
-using System.Web.Mvc;
-#endif
-using System;
 
 namespace PayFx.Demo.Controllers
 {

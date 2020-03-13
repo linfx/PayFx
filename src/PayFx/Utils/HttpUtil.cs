@@ -14,9 +14,24 @@ namespace PayFx.Utils
     /// </summary>
     public static class HttpUtil
     {
-        #region 属性
-
         private static IHttpContextAccessor _httpContextAccessor;
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        static HttpUtil()
+        {
+            ServicePointManager.DefaultConnectionLimit = 200;
+        }
+
+        /// <summary>
+        /// 配置
+        /// </summary>
+        /// <param name="httpContextAccessor"></param>
+        internal static void Configure(IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
 
         /// <summary>
         /// 当前上下文
@@ -97,27 +112,6 @@ namespace PayFx.Utils
             }
         }
 
-        #region 构造函数
-
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        static HttpUtil()
-        {
-            ServicePointManager.DefaultConnectionLimit = 200;
-        }
-
-        /// <summary>
-        /// 配置
-        /// </summary>
-        /// <param name="httpContextAccessor"></param>
-        internal static void Configure(IHttpContextAccessor httpContextAccessor)
-        {
-            _httpContextAccessor = httpContextAccessor;
-        }
-
-        #endregion
-
         /// <summary>
         /// 用户代理
         /// </summary>
@@ -132,8 +126,6 @@ namespace PayFx.Utils
         /// 参数
         /// </summary>
         public static string QueryString => Current.Request.QueryString.ToString();
-
-        #endregion
 
         #region 方法
 

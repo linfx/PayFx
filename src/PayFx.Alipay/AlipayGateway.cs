@@ -12,13 +12,7 @@ namespace PayFx.Alipay
     /// </summary>
     public sealed class AlipayGateway : BaseGateway
     {
-        #region 私有字段
-
         private readonly Merchant _merchant;
-
-        #endregion
-
-        #region 构造函数
 
         /// <summary>
         /// 初始化支付宝网关
@@ -29,8 +23,6 @@ namespace PayFx.Alipay
         {
             _merchant = merchant;
         }
-
-        #endregion
 
         #region 属性
 

@@ -1,11 +1,6 @@
-﻿#if NETCOREAPP
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-#else
-using System.Web.Mvc;
-#endif
 using PayFx.Alipay.Response;
-using PayFx;
-using System.Threading.Tasks;
 
 namespace PayFx.Demo.Controllers
 {

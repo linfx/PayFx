@@ -1,15 +1,10 @@
-﻿using PayFx.Alipay;
+﻿using System.Text;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using PayFx.Alipay;
 using PayFx.Alipay.Domain;
 using PayFx.Alipay.Request;
-using PayFx;
 using PayFx.Response;
-#if NETCOREAPP
-using Microsoft.AspNetCore.Mvc;
-#else
-using System.Web.Mvc;
-#endif
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PayFx.Demo.Controllers
 {

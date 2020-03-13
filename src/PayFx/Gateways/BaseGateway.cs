@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using PayFx;
 using PayFx.Request;
 using PayFx.Response;
 using PayFx.Utils;
