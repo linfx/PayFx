@@ -97,19 +97,11 @@ namespace PayFx.Utils
 
                 if ("RSA2".Equals(signType))
                 {
-#if NETCOREAPP3_1
                     signatureBytes = rsaCsp.SignData(dataBytes, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
-#else
-                    signatureBytes = ((RSACryptoServiceProvider)rsaCsp).SignData(dataBytes, "SHA256");
-#endif
                 }
                 else
                 {
-#if NETCOREAPP3_1
                     signatureBytes = rsaCsp.SignData(dataBytes, HashAlgorithmName.SHA1, RSASignaturePadding.Pkcs1);
-#else
-                    signatureBytes = ((RSACryptoServiceProvider)rsaCsp).SignData(dataBytes, "SHA1");
-#endif
                 }
             }
             catch
@@ -148,23 +140,13 @@ namespace PayFx.Utils
 
                 if ("RSA2".Equals(signType))
                 {
-#if NETCOREAPP3_1
                     bVerifyResultOriginal = rsa.VerifyData(Encoding.GetEncoding(charset).GetBytes(signContent),
                        Convert.FromBase64String(sign), HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
-#else
-                    bVerifyResultOriginal = ((RSACryptoServiceProvider)rsa).VerifyData(
-                        Encoding.GetEncoding(charset).GetBytes(signContent), "SHA256", Convert.FromBase64String(sign));
-#endif
                 }
                 else
                 {
-#if NETCOREAPP3_1
                     bVerifyResultOriginal = rsa.VerifyData(Encoding.GetEncoding(charset).GetBytes(signContent),
                        Convert.FromBase64String(sign), HashAlgorithmName.SHA1, RSASignaturePadding.Pkcs1);
-#else
-                    bVerifyResultOriginal = ((RSACryptoServiceProvider)rsa).VerifyData(
-                        Encoding.GetEncoding(charset).GetBytes(signContent), "SHA1", Convert.FromBase64String(sign));
-#endif
                 }
 
                 return bVerifyResultOriginal;

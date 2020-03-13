@@ -30,19 +30,6 @@ namespace PayFx.Alipay
             _merchant = merchant;
         }
 
-#if NETCOREAPP3_1
-
-        /// <summary>
-        /// 初始化支付宝网关
-        /// </summary>
-        /// <param name="merchant">商户数据</param>
-        public AlipayGateway(IOptions<Merchant> merchant)
-            : this(merchant.Value)
-        {
-        }
-
-#endif
-
         #endregion
 
         #region 属性

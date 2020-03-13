@@ -96,11 +96,7 @@ namespace PayFx
                 {
                     try
                     {
-#if NETCOREAPP3_1
                         gatewayData.FromForm(HttpUtil.Form);
-#else
-                        gatewayData.FromNameValueCollection(HttpUtil.Form);
-#endif
                     }
                     catch { }
                 }

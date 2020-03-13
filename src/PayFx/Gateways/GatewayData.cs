@@ -1,6 +1,4 @@
-﻿#if NETCOREAPP3_1
-using Microsoft.AspNetCore.Http;
-#endif
+﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -401,8 +399,6 @@ namespace PayFx
             }
         }
 
-#if NETCOREAPP3_1
-
         /// <summary>
         /// 将表单数据转换为网关数据
         /// </summary>
@@ -422,7 +418,6 @@ namespace PayFx
             }
             catch { }
         }
-#endif
 
         /// <summary>
         /// 将键值对转换为网关数据

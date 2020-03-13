@@ -4,17 +4,18 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;NETCOREAPP3_1;</DefineConstants>
+    <Version>3.1</Version>
+    <Authors>LinFx</Authors>
+    <Company />
+    <Copyright>LinFx</Copyright>
+    <PackageProjectUrl>https://github.com/linfx/PaySharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/linfx/PaySharp</RepositoryUrl>
   </PropertyGroup>
 
   <Import Project="../../output.props" />
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.2" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />

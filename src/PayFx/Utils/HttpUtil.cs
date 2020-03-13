@@ -1,9 +1,4 @@
-﻿#if NETCOREAPP3_1
-using Microsoft.AspNetCore.Http;
-#else
-using System.Collections.Specialized;
-using System.Web;
-#endif
+﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.IO;
 using System.Net;
@@ -20,8 +15,6 @@ namespace PayFx.Utils
     public static class HttpUtil
     {
         #region 属性
-
-#if NETCOREAPP3_1
 
         private static IHttpContextAccessor _httpContextAccessor;
 
@@ -125,87 +118,6 @@ namespace PayFx.Utils
 
         #endregion
 
-#else
-
-        public static HttpContext Current => HttpContext.Current;
-
-        /// <summary>
-        /// 本地IP
-        /// </summary>
-        public static string LocalIpAddress
-        {
-            get
-            {
-                try
-                {
-                    var ip = Current.Request.UserHostAddress;
-                    var ipAddress = IPAddress.Parse(ip.Split(':')[0]);
-                    return IPAddress.IsLoopback(ipAddress) ?
-                           IPAddress.Loopback.ToString() :
-                           ipAddress.MapToIPv4().ToString();
-                }
-                catch
-                {
-                    return IPAddress.Loopback.ToString();
-                }
-            }
-        }
-
-        /// <summary>
-        /// 客户端IP
-        /// </summary>
-        public static string RemoteIpAddress
-        {
-            get
-            {
-                try
-                {
-                    var ip = Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"] ??
-                             Current.Request.ServerVariables["REMOTE_ADDR"];
-                    var ipAddress = IPAddress.Parse(ip.Split(':')[0]);
-                    return IPAddress.IsLoopback(ipAddress) ?
-                           IPAddress.Loopback.ToString() :
-                           ipAddress.MapToIPv4().ToString();
-                }
-                catch
-                {
-                    return IPAddress.Loopback.ToString();
-                }
-            }
-        }
-
-        /// <summary>
-        /// 请求类型
-        /// </summary>
-        public static string RequestType => Current.Request.HttpMethod;
-
-        /// <summary>
-        /// 表单
-        /// </summary>
-        public static NameValueCollection Form => Current.Request.Form;
-
-        /// <summary>
-        /// 请求体
-        /// </summary>
-        public static Stream Body
-        {
-            get
-            {
-                var inputStream = Current.Request.InputStream;
-                try
-                {
-                    if (inputStream.CanSeek)
-                    {
-                        inputStream.Position = 0;
-                    }
-                }
-                catch { }
-                return inputStream;
-            }
-        }
-
-#endif
-
         /// <summary>
         /// 用户代理
         /// </summary>
@@ -242,18 +154,12 @@ namespace PayFx.Utils
         {
             Current.Response.ContentType = "text/plain;charset=utf-8";
 
-#if NETCOREAPP3_1
             Task.Run(async () =>
             {
                 await Current.Response.WriteAsync(text);
             })
             .GetAwaiter()
             .GetResult();
-#else
-            Current.Response.Write(text);
-            Current.Response.End();
-#endif
-
         }
 
         /// <summary>
@@ -272,7 +178,6 @@ namespace PayFx.Utils
             Current.Response.Headers.Add("Content-Disposition", "attachment;filename=" + WebUtility.UrlEncode(Path.GetFileName(stream.Name)));
             Current.Response.Headers.Add("Content-Length", size.ToString());
 
-#if NETCOREAPP3_1
             Task.Run(async () =>
             {
                 await Current.Response.Body.WriteAsync(buffer, 0, (int)size);
@@ -280,11 +185,6 @@ namespace PayFx.Utils
             .GetAwaiter()
             .GetResult();
             Current.Response.Body.Close();
-#else
-            Current.Response.BinaryWrite(buffer);
-            Current.Response.End();
-            Current.Response.Close();
-#endif
         }
 
         /// <summary>

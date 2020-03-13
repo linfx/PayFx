@@ -1,5 +1,4 @@
-﻿#if NETCOREAPP3_1
-using System;
+﻿using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using PayFx;
@@ -41,5 +40,3 @@ namespace Microsoft.Extensions.DependencyInjection
         }
     }
 }
-
-#endif
