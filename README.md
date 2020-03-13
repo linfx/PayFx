@@ -1,4 +1,4 @@
-# PayFx<img src="https://github.com/Varorbc/PayFx/raw/master/logo.png" width="50px" height="50px">
+# PayFx<img src="https://github.com/linfx/PayFx/raw/master/logo.png" width="50px" height="50px">
 ---
 
 PayFx是一个支持多商户多种支付方式的跨平台网关处理类库，使用PayFx可以简化订单的创建、查询、退款和接收网关返回的支付通知等操作。
@@ -78,7 +78,7 @@ PayFx.Allinpay	| [![NuGet](https://img.shields.io/nuget/v/PayFx.Allinpay.svg)](h
 # 如何使用
 ---
 
-见[Demo](https://github.com/Varorbc/PayFx/tree/master/sample/PayFx.Demo)
+见[Demo](https://github.com/linfx/PayFx/tree/master/sample/PayFx.Demo)
 
 # 交流讨论
 ---
@@ -118,10 +118,4 @@ https://aipboss.allinpay.com/know/devhelp/index.php
 # 致谢
 ---
 
-[hiihellox10](https://github.com/hiihellox10)
-
-[John0King](https://github.com/John0King)
-
-[stulzq](https://github.com/stulzq)
-
-[Essensoft-Roc](https://github.com/Essensoft-Roc)
+[落叶~](https://github.com/J-luoye)
