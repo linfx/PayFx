@@ -108,13 +108,6 @@ https://qpay.qq.com/buss/doc.shtml
 
 https://aipboss.allinpay.com/know/devhelp/index.php
 
-# 支持/打赏
-
-<p align="center">
-    <img src="https://github.com/Varorbc/PayFx/raw/master/reward.jpg">
-    <p align="center">打赏扫这里，请留下尊姓大名</p>
-</p>
-
 # 致谢
 ---
 

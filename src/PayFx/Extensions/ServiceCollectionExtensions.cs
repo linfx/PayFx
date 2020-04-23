@@ -35,38 +35,5 @@ namespace Microsoft.Extensions.DependencyInjection
             HttpUtil.Configure(httpContextAccessor);
             return app;
         }
-
-        /// <summary>
-        /// 添加PayFx
-        /// </summary>
-        /// <param name="services"></param>
-        /// <param name="setupAction"></param>
-        [Obsolete]
-        public static void AddPaySharp(this IServiceCollection services, Action<IGateways> setupAction)
-        {
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
-            services.AddScoped<IGateways>(a =>
-            {
-                var gateways = new Gateways();
-                setupAction(gateways);
-
-                return gateways;
-            });
-        }
-
-        /// <summary>
-        /// 使用PayFx
-        /// </summary>
-        /// <param name="app"></param>
-        /// <returns></returns>
-        [Obsolete]
-        public static IApplicationBuilder UsePaySharp(this IApplicationBuilder app)
-        {
-            var httpContextAccessor = app.ApplicationServices.GetRequiredService<IHttpContextAccessor>();
-            HttpUtil.Configure(httpContextAccessor);
-
-            return app;
-        }
     }
 }

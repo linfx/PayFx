@@ -10,12 +10,12 @@ namespace PayFx.Demo
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -38,6 +38,12 @@ namespace PayFx.Demo
 
             services.AddPayFx(a =>
             {
+                // 支付宝
+                a.UseAlipay(Configuration);
+
+                // 微信
+                a.UseWechatpay(Configuration);
+
                 // 设置商户数据
                 //var alipayMerchant = new Alipay.Merchant
                 //{
@@ -90,10 +96,6 @@ namespace PayFx.Demo
                 //    GatewayUrl = "https://test.allinpaygd.com"
                 //});
 
-                // 增加支付宝
-                a.UseAlipay(Configuration);
-
-                //a.UseWechatpay(Configuration);
                 ////a.UseUnionpay(Configuration);
                 //a.UseQpay(opt =>
                 //{

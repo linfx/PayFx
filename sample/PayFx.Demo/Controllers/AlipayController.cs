@@ -17,34 +17,48 @@ namespace PayFx.Demo.Controllers
             _gateway = gateways.Get<AlipayGateway>();
         }
 
+        /// <summary>
+        /// 电脑网站支付
+        /// </summary>
+        /// <param name="out_trade_no"></param>
+        /// <param name="subject"></param>
+        /// <param name="total_amount"></param>
+        /// <param name="body"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult WebPay(string out_trade_no, string subject, double total_amount, string body)
         {
             var request = new WebPayRequest();
-            request.AddGatewayData(new WebPayModel()
+            request.AddGatewayData(new WebPayModel
             {
                 Body = body,
                 TotalAmount = total_amount,
                 Subject = subject,
                 OutTradeNo = out_trade_no
             });
-
             var response = _gateway.Execute(request);
             return Content(response.Html, "text/html", Encoding.UTF8);
         }
 
+        /// <summary>
+        /// 手机网站支付
+        /// </summary>
+        /// <param name="out_trade_no"></param>
+        /// <param name="subject"></param>
+        /// <param name="total_amount"></param>
+        /// <param name="body"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult WapPay(string out_trade_no, string subject, double total_amount, string body)
         {
             var request = new WapPayRequest();
-            request.AddGatewayData(new WapPayModel()
+            request.AddGatewayData(new WapPayModel
             {
                 Body = body,
                 TotalAmount = total_amount,
                 Subject = subject,
                 OutTradeNo = out_trade_no
             });
-
             var response = _gateway.Execute(request);
             return Redirect(response.Url);
         }
