@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PaySharp.Unionpay.Domain
+namespace PayFx.Unionpay.Domain
 {
     public class ScanPayModel : BasePayModel
     {

@@ -44,6 +44,9 @@ namespace PayFx.Demo
                 // 微信
                 a.UseWechatpay(Configuration);
 
+                // 银联
+                a.UseUnionpay(Configuration);
+
                 // 设置商户数据
                 //var alipayMerchant = new Alipay.Merchant
                 //{
@@ -96,7 +99,6 @@ namespace PayFx.Demo
                 //    GatewayUrl = "https://test.allinpaygd.com"
                 //});
 
-                ////a.UseUnionpay(Configuration);
                 //a.UseQpay(opt =>
                 //{
                 //    opt.AppId = "100619284";

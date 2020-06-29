@@ -1,9 +1,9 @@
 ﻿using System;
-using PaySharp.Core.Response;
-using PaySharp.Unionpay.Domain;
-using PaySharp.Unionpay.Response;
+using PayFx.Response;
+using PayFx.Unionpay.Domain;
+using PayFx.Unionpay.Response;
 
-namespace PaySharp.Unionpay.Request
+namespace PayFx.Unionpay.Request
 {
     public class BarcodePayRequest : BaseRequest<BarcodePayModel, BarcodePayResponse>
     {

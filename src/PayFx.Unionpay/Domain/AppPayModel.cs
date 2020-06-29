@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using PaySharp.Core;
 
-namespace PaySharp.Unionpay.Domain
+namespace PayFx.Unionpay.Domain
 {
     public class AppPayModel : BasePayModel
     {

@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{AC2CF2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayFx.Demo", "sample\PayFx.Demo\PayFx.Demo.csproj", "{C10B6B6A-28BA-45CF-8D91-84E780731A54}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayFx.Unionpay", "src\PayFx.Unionpay\PayFx.Unionpay.csproj", "{C8C06331-DD22-408D-AEF1-D721EEC4EB2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{C10B6B6A-28BA-45CF-8D91-84E780731A54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C10B6B6A-28BA-45CF-8D91-84E780731A54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C10B6B6A-28BA-45CF-8D91-84E780731A54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8C06331-DD22-408D-AEF1-D721EEC4EB2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8C06331-DD22-408D-AEF1-D721EEC4EB2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8C06331-DD22-408D-AEF1-D721EEC4EB2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8C06331-DD22-408D-AEF1-D721EEC4EB2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

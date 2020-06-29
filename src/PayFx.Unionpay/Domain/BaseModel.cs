@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace PaySharp.Unionpay.Domain
+namespace PayFx.Unionpay.Domain
 {
     public class BaseModel
     {
@@ -18,7 +18,7 @@ namespace PaySharp.Unionpay.Domain
         /// 001001：订购
         /// 000202：B2B
         /// </summary>
-        public string BizType { get; internal set; } = "000201";
+        public string BizType { get; internal set; } = "000202";
 
         /// <summary>
         /// 订单发送时间

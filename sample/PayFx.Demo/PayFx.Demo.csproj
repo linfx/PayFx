@@ -7,11 +7,11 @@
   <ItemGroup>
     <Compile Remove="Controllers\AllinpayController.cs" />
     <Compile Remove="Controllers\QpayController.cs" />
-    <Compile Remove="Controllers\UnionpayController.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\PayFx.Alipay\PayFx.Alipay.csproj" />
+    <ProjectReference Include="..\..\src\PayFx.Unionpay\PayFx.Unionpay.csproj" />
     <ProjectReference Include="..\..\src\PayFx.Wechatpay\PayFx.Wechatpay.csproj" />
   </ItemGroup>
 

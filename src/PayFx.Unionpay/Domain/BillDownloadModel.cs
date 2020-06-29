@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using PaySharp.Core;
+using PayFx;
 
-namespace PaySharp.Unionpay.Domain
+namespace PayFx.Unionpay.Domain
 {
     public class BillDownloadModel : BaseModel
     {

@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Org.BouncyCastle.Crypto;
-using PaySharp.Core;
 
-namespace PaySharp.Unionpay
+namespace PayFx.Unionpay
 {
     public class Merchant : IMerchant
     {

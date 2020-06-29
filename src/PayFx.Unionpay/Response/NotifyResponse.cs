@@ -1,7 +1,7 @@
-﻿using PaySharp.Core;
-using PaySharp.Core.Response;
+﻿using PayFx;
+using PayFx.Response;
 
-namespace PaySharp.Unionpay.Response
+namespace PayFx.Unionpay.Response
 {
     public class NotifyResponse : IResponse
     {

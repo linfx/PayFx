@@ -1,26 +1,21 @@
 ﻿using System;
-using PaySharp.Core.Request;
-using PaySharp.Core.Response;
-using PaySharp.Core.Utils;
+using PayFx.Request;
+using PayFx.Response;
+using PayFx.Utils;
 
-namespace PaySharp.Unionpay.Request
+namespace PayFx.Unionpay.Request
 {
     public class BaseRequest<TModel, TResponse> : Request<TModel, TResponse> where TResponse : IResponse
     {
         public BaseRequest()
-            : base(StringComparer.Ordinal)
-        {
-        }
+            : base(StringComparer.Ordinal) { }
 
         public override void AddGatewayData(TModel model)
         {
             base.AddGatewayData(model);
-
             GatewayData.Add(model, StringCase.Camel);
         }
 
-        internal virtual void Execute(Merchant merchant)
-        {
-        }
+        internal virtual void Execute(Merchant merchant) { }
     }
 }

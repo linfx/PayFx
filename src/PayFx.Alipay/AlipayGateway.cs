@@ -24,8 +24,6 @@ namespace PayFx.Alipay
             _merchant = merchant;
         }
 
-        #region 属性
-
         public override string GatewayUrl { get; set; } = "https://openapi.alipay.com";
 
         public new NotifyResponse NotifyResponse => (NotifyResponse)base.NotifyResponse;
@@ -41,10 +39,6 @@ namespace PayFx.Alipay
             "app_id","version", "charset","trade_no", "sign","sign_type"
         };
 
-        #endregion
-
-        #region 公共方法
-
         protected override async Task<bool> ValidateNotifyAsync()
         {
             base.NotifyResponse = await GatewayData.ToObjectAsync<NotifyResponse>(StringCase.Snake);
@@ -52,8 +46,7 @@ namespace PayFx.Alipay
             GatewayData.Remove("sign");
             GatewayData.Remove("sign_type");
 
-            var result = EncryptUtil.RSAVerifyData(GatewayData.ToUrl(false),
-                NotifyResponse.Sign, _merchant.AlipayPublicKey, _merchant.SignType);
+            var result = EncryptUtil.RSAVerifyData(GatewayData.ToUrl(false), NotifyResponse.Sign, _merchant.AlipayPublicKey, _merchant.SignType);
             if (result)
             {
                 return true;
@@ -71,7 +64,5 @@ namespace PayFx.Alipay
 
             return SubmitProcess.Execute(_merchant, request, GatewayUrl);
         }
-
-        #endregion
     }
 }

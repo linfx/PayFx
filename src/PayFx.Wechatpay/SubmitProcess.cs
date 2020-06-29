@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
-using PayFx;
 using PayFx.Exceptions;
 using PayFx.Request;
 using PayFx.Response;

@@ -1,7 +1,7 @@
-﻿using PaySharp.Core.Response;
-using PaySharp.Unionpay.Request;
+﻿using PayFx.Response;
+using PayFx.Unionpay.Request;
 
-namespace PaySharp.Unionpay.Response
+namespace PayFx.Unionpay.Response
 {
     public class WebPayResponse : IResponse
     {

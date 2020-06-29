@@ -1,6 +1,6 @@
-﻿using PaySharp.Core.Request;
+﻿using PayFx.Request;
 
-namespace PaySharp.Unionpay.Response
+namespace PayFx.Unionpay.Response
 {
     public class AppPayResponse : BaseResponse
     {

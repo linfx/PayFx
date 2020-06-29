@@ -1,4 +1,4 @@
-﻿namespace PaySharp.Unionpay.Domain
+﻿namespace PayFx.Unionpay.Domain
 {
     public class WebPayModel : BasePayModel
     {
@@ -38,7 +38,6 @@
         /// 持卡人IP
         /// </summary>
         public string CustomerIp { get; set; }
-
 
         /// <summary>
         /// 终端号

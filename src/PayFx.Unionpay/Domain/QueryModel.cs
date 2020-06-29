@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace PaySharp.Unionpay.Domain
+namespace PayFx.Unionpay.Domain
 {
     public class QueryModel : BaseModel, IValidatableObject
     {

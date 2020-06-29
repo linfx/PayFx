@@ -1,8 +1,7 @@
-﻿#if NETCOREAPP3_1
-using System;
+﻿using System;
 using Microsoft.Extensions.Configuration;
-using PaySharp.Core;
-using PaySharp.Unionpay;
+using PayFx;
+using PayFx.Unionpay;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -16,13 +15,12 @@ namespace Microsoft.Extensions.DependencyInjection
                 action(merchant);
                 gateways.Add(new UnionpayGateway(merchant));
             }
-
             return gateways;
         }
 
         public static IGateways UseUnionpay(this IGateways gateways, IConfiguration configuration)
         {
-            var merchants = configuration.GetSection("PaySharp:Unionpays").Get<Merchant[]>();
+            var merchants = configuration.GetSection("PayFx:Unionpays").Get<Merchant[]>();
             if (merchants != null)
             {
                 for (var i = 0; i < merchants.Length; i++)
@@ -37,10 +35,7 @@ namespace Microsoft.Extensions.DependencyInjection
                     gateways.Add(unionpayGateway);
                 }
             }
-
             return gateways;
         }
     }
 }
-
-#endif

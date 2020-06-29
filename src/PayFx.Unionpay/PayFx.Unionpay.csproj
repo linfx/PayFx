@@ -3,22 +3,22 @@
   <Import Project="../../package.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net45;netcoreapp3.1</TargetFrameworks>
-    <Title>PaySharp.Unionpay</Title>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Title>PayFx.Unionpay</Title>
     <Description>中国银联</Description>
     <PackageTags>dotnetcore;pay;unionpay;</PackageTags>
     <PackageReleaseNotes>
       支持.net core3.1
     </PackageReleaseNotes>
   </PropertyGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
-    <Reference Include="System.Web" />
-  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="Portable.BouncyCastle" Version="1.8.1.3" />
     <PackageReference Include="SharpZipLib" Version="1.0.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\PayFx\PayFx.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,7 +37,4 @@
   </ItemGroup>
 
   <Import Project="../../output.props" />
-
-  <Import Project="../../dependencies.props" />
-
 </Project>

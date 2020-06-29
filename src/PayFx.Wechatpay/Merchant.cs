@@ -1,13 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using PayFx;
-using PayFx;
 
 namespace PayFx.Wechatpay
 {
     public class Merchant : IMerchant
     {
-        #region 属性
-
         /// <summary>
         /// 应用ID
         /// </summary>
@@ -64,7 +60,5 @@ namespace PayFx.Wechatpay
         /// </summary>
         [Ignore]
         public string PublicKey { get; set; }
-
-        #endregion
     }
 }

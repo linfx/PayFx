@@ -7,7 +7,7 @@ namespace PayFx.Demo.Controllers
     public class NotifyController : Controller
     {
         private readonly IGateways _gateways;
-        private bool isRedirect;
+        private bool _isRedirect;
 
         public NotifyController(IGateways gateways)
         {
@@ -27,7 +27,7 @@ namespace PayFx.Demo.Controllers
             // 接收并处理支付通知
             await notify.ReceivedAsync();
 
-            if (isRedirect)
+            if (_isRedirect)
             {
                 Response.Redirect("https://github.com/Varorbc/PayFx");
             }
@@ -47,7 +47,7 @@ namespace PayFx.Demo.Controllers
                 //同步通知，即浏览器跳转返回
                 if (e.NotifyType == NotifyType.Sync)
                 {
-                    isRedirect = true;
+                    _isRedirect = true;
                 }
             }
 

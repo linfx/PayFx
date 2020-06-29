@@ -1,14 +1,10 @@
-﻿#if NETCOREAPP
+﻿using System.Text;
 using Microsoft.AspNetCore.Mvc;
-#else
-using System.Web.Mvc;
-#endif
-using PaySharp.Core;
-using PaySharp.Core.Response;
-using PaySharp.Unionpay;
-using PaySharp.Unionpay.Domain;
-using PaySharp.Unionpay.Request;
-using System.Text;
+using PayFx;
+using PayFx.Response;
+using PayFx.Unionpay;
+using PayFx.Unionpay.Domain;
+using PayFx.Unionpay.Request;
 
 namespace PaySharp.Demo.Controllers
 {
@@ -25,12 +21,11 @@ namespace PaySharp.Demo.Controllers
         public ActionResult WebPay(string order_id, int total_amount)
         {
             var request = new WebPayRequest();
-            request.AddGatewayData(new WebPayModel()
+            request.AddGatewayData(new WebPayModel
             {
                 TotalAmount = total_amount,
                 OrderId = order_id
             });
-
             var response = _gateway.Execute(request);
             return Content(response.Html, "text/html", Encoding.UTF8);
         }

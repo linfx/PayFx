@@ -11,10 +11,10 @@ using Org.BouncyCastle.Security;
 using Org.BouncyCastle.Utilities.Collections;
 using Org.BouncyCastle.X509;
 using Org.BouncyCastle.X509.Store;
-using PaySharp.Core.Utils;
-using PaySharp.Unionpay.Properties;
+using PayFx.Unionpay.Properties;
+using PayFx.Utils;
 
-namespace PaySharp.Unionpay
+namespace PayFx.Unionpay
 {
     internal static class Util
     {

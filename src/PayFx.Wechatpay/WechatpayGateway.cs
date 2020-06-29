@@ -1,8 +1,5 @@
-﻿#if NETCOREAPP3_1
+﻿using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
-#endif
-using System.Threading.Tasks;
-using PayFx;
 using PayFx.Exceptions;
 using PayFx.Request;
 using PayFx.Utils;
@@ -23,8 +20,6 @@ namespace PayFx.Wechatpay
 
         #endregion
 
-        #region 构造函数
-
         /// <summary>
         /// 初始化微信支付网关
         /// </summary>
@@ -35,8 +30,6 @@ namespace PayFx.Wechatpay
             _merchant = merchant;
         }
 
-#if NETCOREAPP3_1
-
         /// <summary>
         /// 初始化微信支付网关
         /// </summary>
@@ -45,10 +38,6 @@ namespace PayFx.Wechatpay
             : this(merchant.Value)
         {
         }
-
-#endif
-
-        #endregion
 
         #region 属性
 

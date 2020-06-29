@@ -1,14 +1,13 @@
 ﻿using System;
 using Org.BouncyCastle.Crypto;
-using PaySharp.Core;
-using PaySharp.Core.Exceptions;
-using PaySharp.Core.Request;
-using PaySharp.Core.Response;
-using PaySharp.Core.Utils;
-using PaySharp.Unionpay.Request;
-using PaySharp.Unionpay.Response;
+using PayFx.Exceptions;
+using PayFx.Request;
+using PayFx.Response;
+using PayFx.Utils;
+using PayFx.Unionpay.Request;
+using PayFx.Unionpay.Response;
 
-namespace PaySharp.Unionpay
+namespace PayFx.Unionpay
 {
     internal static class SubmitProcess
     {

@@ -1,10 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using PaySharp.Core.Request;
-using PaySharp.Unionpay.Domain;
-using PaySharp.Unionpay.Request;
+using PayFx.Request;
+using PayFx.Unionpay.Domain;
+using PayFx.Unionpay.Request;
 
-namespace PaySharp.Unionpay.Response
+namespace PayFx.Unionpay.Response
 {
     public class BarcodePayResponse : BaseResponse
     {

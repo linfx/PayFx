@@ -1,8 +1,7 @@
-﻿using PaySharp.Core;
-using PaySharp.Core.Request;
-using PaySharp.Core.Response;
+﻿using PayFx.Request;
+using PayFx.Response;
 
-namespace PaySharp.Unionpay.Response
+namespace PayFx.Unionpay.Response
 {
     public abstract class BaseResponse : IResponse
     {

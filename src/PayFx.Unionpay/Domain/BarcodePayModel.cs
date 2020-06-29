@@ -1,4 +1,4 @@
-﻿namespace PaySharp.Unionpay.Domain
+﻿namespace PayFx.Unionpay.Domain
 {
     public class BarcodePayModel : ScanPayModel
     {
