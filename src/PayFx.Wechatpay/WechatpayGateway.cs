@@ -14,12 +14,6 @@ namespace PayFx.Wechatpay
     /// </summary>
     public sealed class WechatpayGateway : BaseGateway
     {
-        #region 私有字段
-
-        private readonly Merchant _merchant;
-
-        #endregion
-
         /// <summary>
         /// 初始化微信支付网关
         /// </summary>
@@ -27,7 +21,7 @@ namespace PayFx.Wechatpay
         public WechatpayGateway(Merchant merchant)
             : base(merchant)
         {
-            _merchant = merchant;
+            Merchant = merchant;
         }
 
         /// <summary>
@@ -43,7 +37,7 @@ namespace PayFx.Wechatpay
 
         public override string GatewayUrl { get; set; } = "https://api.mch.weixin.qq.com";
 
-        public new Merchant Merchant => _merchant;
+        public new Merchant Merchant { get; }
 
         public new NotifyResponse NotifyResponse => (NotifyResponse)base.NotifyResponse;
 
@@ -75,7 +69,7 @@ namespace PayFx.Wechatpay
             if (string.IsNullOrEmpty(NotifyResponse.ReqInfo))
             {
                 NotifyResponse.Coupons = ConvertUtil.ToList<CouponResponse, object>(GatewayData, -1);
-                if (NotifyResponse.Sign != SubmitProcess.BuildSign(GatewayData, _merchant.Key))
+                if (NotifyResponse.Sign != SubmitProcess.BuildSign(GatewayData, Merchant.Key))
                 {
                     throw new GatewayException("签名不一致");
                 }
@@ -83,7 +77,7 @@ namespace PayFx.Wechatpay
             else
             {
                 var tempNotify = NotifyResponse;
-                var key = EncryptUtil.MD5(_merchant.Key).ToLower();
+                var key = EncryptUtil.MD5(Merchant.Key).ToLower();
                 var data = EncryptUtil.AESDecrypt(NotifyResponse.ReqInfo, key);
                 var gatewayData = new GatewayData();
                 gatewayData.FromXml(data);
@@ -119,10 +113,10 @@ namespace PayFx.Wechatpay
         {
             if (request is OAuthRequest)
             {
-                return SubmitProcess.AuthExecute(_merchant, request, GatewayUrl);
+                return SubmitProcess.AuthExecute(Merchant, request, GatewayUrl);
             }
 
-            return SubmitProcess.Execute(_merchant, request, GatewayUrl);
+            return SubmitProcess.Execute(Merchant, request, GatewayUrl);
         }
 
         #endregion
