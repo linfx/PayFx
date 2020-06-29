@@ -18,20 +18,11 @@ namespace PayFx.Unionpay
 {
     internal static class Util
     {
-        #region 字段
-
-        private static Pkcs12Store _pkcs12Store;
         private static string _aliase;
-
-        #endregion
-
-        #region 证书
-
+        private static Pkcs12Store _pkcs12Store;
         private static X509Certificate ACPENCCER = null;
         private static X509Certificate ACPROOTCER = null;
         private static X509Certificate ACPMIDDLECER = null;
-
-        #endregion
 
         #region 证书操作
 
@@ -136,7 +127,7 @@ namespace PayFx.Unionpay
             var signByte = Convert.FromBase64String(sign);
 
             var x509Cert = VerifyAndGetPubKey(signPubKeyCert);
-            return x509Cert == null ? false : VerifySignature(x509Cert.GetPublicKey(), signByte, dataByte);
+            return x509Cert != null && VerifySignature(x509Cert.GetPublicKey(), signByte, dataByte);
         }
 
         private static bool VerifySignature(AsymmetricKeyParameter key, byte[] base64DecodingSignStr, byte[] srcByte)

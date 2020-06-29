@@ -26,12 +26,11 @@ namespace Microsoft.Extensions.DependencyInjection
                 for (var i = 0; i < merchants.Length; i++)
                 {
                     var unionpayGateway = new UnionpayGateway(merchants[i]);
-                    var gatewayUrl = configuration.GetSection($"PaySharp:Unionpays:{i}:GatewayUrl").Value;
+                    var gatewayUrl = configuration.GetSection($"PayFx:Unionpays:{i}:GatewayUrl").Value;
                     if (!string.IsNullOrEmpty(gatewayUrl))
                     {
                         unionpayGateway.GatewayUrl = gatewayUrl;
                     }
-
                     gateways.Add(unionpayGateway);
                 }
             }

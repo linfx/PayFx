@@ -15,7 +15,6 @@ namespace Microsoft.Extensions.DependencyInjection
                 action(merchant);
                 gateways.Add(new WechatpayGateway(merchant));
             }
-
             return gateways;
         }
 

@@ -13,7 +13,6 @@ namespace PayFx.Unionpay
     /// </summary>
     public sealed class UnionpayGateway : BaseGateway
     {
-
         /// <summary>
         /// 初始化中国银联网关
         /// </summary>
@@ -33,7 +32,7 @@ namespace PayFx.Unionpay
         public UnionpayGateway(IOptions<Merchant> merchant)
            : this(merchant.Value) { }
 
-        public override string GatewayUrl { get; set; } = "https://gateway.test.95516.com";
+        public override string GatewayUrl { get; set; } = "https://gateway.95516.com";
 
         public new Merchant Merchant { get; }
 
@@ -45,14 +44,11 @@ namespace PayFx.Unionpay
 
         protected override bool IsCancelSuccess => NotifyResponse.TxnType == "31" && NotifyResponse.RespCode == "00";
 
-        protected override string[] NotifyVerifyParameter => new string[]
-        {
-            "merId",  "respCode", "respMsg", "queryId", "signMethod"
-        };
+        protected override string[] NotifyVerifyParameter => new string[] { "merId", "respCode", "respMsg", "queryId", "signMethod" };
 
         protected override async Task<bool> ValidateNotifyAsync()
         {
-            base.NotifyResponse = (PayFx.Response.IResponse)await GatewayData.ToObjectAsync<NotifyResponse>(StringCase.Camel);
+            base.NotifyResponse = await GatewayData.ToObjectAsync<NotifyResponse>(StringCase.Camel);
             base.NotifyResponse.Raw = GatewayData.ToUrl(false);
 
             var gatewayData = new GatewayData(StringComparer.Ordinal);
@@ -66,7 +62,6 @@ namespace PayFx.Unionpay
             {
                 return SubmitProcess.SdkExecute(Merchant, request, GatewayUrl);
             }
-
             return SubmitProcess.Execute(Merchant, request, GatewayUrl);
         }
 

@@ -1,12 +1,11 @@
 ﻿using System.Text;
 using Microsoft.AspNetCore.Mvc;
-using PayFx;
 using PayFx.Response;
 using PayFx.Unionpay;
 using PayFx.Unionpay.Domain;
 using PayFx.Unionpay.Request;
 
-namespace PaySharp.Demo.Controllers
+namespace PayFx.Demo.Controllers
 {
     public class UnionpayController : Controller
     {
