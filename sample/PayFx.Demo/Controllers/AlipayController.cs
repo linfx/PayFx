@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using PayFx.Alipay;
 using PayFx.Alipay.Domain;
 using PayFx.Alipay.Request;
-using PayFx.Response;
+using PayFx.Http;
 
 namespace PayFx.Demo.Controllers
 {

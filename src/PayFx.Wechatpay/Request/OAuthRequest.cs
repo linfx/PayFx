@@ -1,5 +1,4 @@
-﻿using PayFx.Exceptions;
-using PayFx.Wechatpay.Domain;
+﻿using PayFx.Wechatpay.Domain;
 using PayFx.Wechatpay.Response;
 
 namespace PayFx.Wechatpay.Request
@@ -8,14 +7,14 @@ namespace PayFx.Wechatpay.Request
     {
         public OAuthRequest()
         {
-            RequestUrl = "https://api.weixin.qq.com/sns/oauth2/access_token";
+            RequestUri = "https://api.weixin.qq.com/sns/oauth2/access_token";
         }
 
         internal override void Execute(Merchant merchant)
         {
             if (string.IsNullOrEmpty(merchant.AppSecret))
             {
-                throw new GatewayException("请设置AppSecret");
+                throw new PayFxException("请设置AppSecret");
             }
 
             GatewayData.Add("secret", merchant.AppSecret);

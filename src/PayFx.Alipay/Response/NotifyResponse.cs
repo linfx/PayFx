@@ -1,6 +1,6 @@
 ﻿using System;
 using PayFx;
-using PayFx.Response;
+using PayFx.Http;
 
 namespace PayFx.Alipay.Response
 {

@@ -1,4 +1,4 @@
-﻿namespace PayFx.Response
+﻿namespace PayFx.Http
 {
     public interface IResponse
     {

@@ -1,5 +1,4 @@
-﻿using PayFx;
-using PayFx.Response;
+﻿using PayFx.Http;
 
 namespace PayFx.Unionpay.Response
 {

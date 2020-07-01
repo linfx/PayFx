@@ -1,8 +1,4 @@
-﻿using PayFx.Unionpay;
-using PayFx;
-using PayFx.Request;
-
-namespace PayFx.Unionpay.Response
+﻿namespace PayFx.Unionpay.Response
 {
     public class RefundResponse : BaseResponse
     {
@@ -36,9 +32,5 @@ namespace PayFx.Unionpay.Response
         /// 原交易商户发送交易时间		
         /// </summary>
         public string OrigTxnTime { get; set; }
-
-        internal override void Execute<TModel, TResponse>(Merchant merchant, Request<TModel, TResponse> request)
-        {
-        }
     }
 }

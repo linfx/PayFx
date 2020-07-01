@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using PayFx;
-using PayFx.Request;
+using PayFx.Http;
 using static PayFx.Wechatpay.Response.RefundResponse;
 
 namespace PayFx.Wechatpay.Response

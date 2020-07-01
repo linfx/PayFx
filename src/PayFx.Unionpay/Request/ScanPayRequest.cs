@@ -7,7 +7,7 @@ namespace PayFx.Unionpay.Request
     {
         public ScanPayRequest()
         {
-            RequestUrl = "/gateway/api/backTransReq.do";
+            RequestUri = "/gateway/api/backTransReq.do";
         }
     }
 }

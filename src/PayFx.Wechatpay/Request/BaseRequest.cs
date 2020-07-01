@@ -1,6 +1,5 @@
-﻿using PayFx.Request;
-using PayFx.Response;
-using PayFx.Utils;
+﻿using PayFx.Http;
+using PayFx.Http;
 
 namespace PayFx.Wechatpay.Request
 {
@@ -8,7 +7,7 @@ namespace PayFx.Wechatpay.Request
     {
         public BaseRequest()
         {
-            RequestUrl = "/pay/unifiedorder";
+            RequestUri = "/pay/unifiedorder";
         }
 
         public override void AddGatewayData(TModel model)

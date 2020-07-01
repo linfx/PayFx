@@ -3,7 +3,6 @@ using System.Security.Cryptography;
 using System.Text;
 using Org.BouncyCastle.Asn1;
 using Org.BouncyCastle.Asn1.X509;
-using PayFx.Exceptions;
 using PayFx.Wechatpay.Domain;
 using PayFx.Wechatpay.Response;
 
@@ -15,7 +14,7 @@ namespace PayFx.Wechatpay.Request
 
         public TransferToBankRequest()
         {
-            RequestUrl = "/mmpaysptrans/pay_bank";
+            RequestUri = "/mmpaysptrans/pay_bank";
             IsUseCert = true;
         }
 
@@ -23,7 +22,7 @@ namespace PayFx.Wechatpay.Request
         {
             if (string.IsNullOrEmpty(merchant.PublicKey))
             {
-                throw new GatewayException("请设置商户公钥");
+                throw new PayFxException("请设置商户公钥");
             }
 
             if (_rSACryptoServiceProvider == null)

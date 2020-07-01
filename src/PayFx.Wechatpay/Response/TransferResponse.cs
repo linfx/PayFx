@@ -1,6 +1,6 @@
 ﻿using System;
 using PayFx;
-using PayFx.Request;
+using PayFx.Http;
 
 namespace PayFx.Wechatpay.Response
 {

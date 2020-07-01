@@ -7,7 +7,7 @@ namespace PayFx.Wechatpay.Request
     {
         public RefundQueryRequest()
         {
-            RequestUrl = "/pay/refundquery";
+            RequestUri = "/pay/refundquery";
         }
 
         internal override void Execute(Merchant merchant)

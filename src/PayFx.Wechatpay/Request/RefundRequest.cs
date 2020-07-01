@@ -7,7 +7,7 @@ namespace PayFx.Wechatpay.Request
     {
         public RefundRequest()
         {
-            RequestUrl = "/secapi/pay/refund";
+            RequestUri = "/secapi/pay/refund";
             IsUseCert = true;
         }
     }

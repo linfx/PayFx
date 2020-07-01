@@ -7,7 +7,7 @@ namespace PayFx.Wechatpay.Request
     {
         public CloseRequest()
         {
-            RequestUrl = "/pay/closeorder";
+            RequestUri = "/pay/closeorder";
             IsUseCert = true;
         }
 

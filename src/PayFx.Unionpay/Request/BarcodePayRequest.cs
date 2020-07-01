@@ -1,5 +1,5 @@
 ﻿using System;
-using PayFx.Response;
+using PayFx.Http;
 using PayFx.Unionpay.Domain;
 using PayFx.Unionpay.Response;
 
@@ -9,7 +9,7 @@ namespace PayFx.Unionpay.Request
     {
         public BarcodePayRequest()
         {
-            RequestUrl = "/gateway/api/backTransReq.do";
+            RequestUri = "/gateway/api/backTransReq.do";
         }
 
         /// <summary>

@@ -1,4 +1,4 @@
-﻿using PayFx.Response;
+﻿using PayFx.Http;
 using PayFx.Unionpay.Request;
 
 namespace PayFx.Unionpay.Response
@@ -7,7 +7,7 @@ namespace PayFx.Unionpay.Response
     {
         public WebPayResponse(WebPayRequest request)
         {
-            Html = request.GatewayData.ToForm(request.RequestUrl);
+            Html = request.GatewayData.ToForm(request.RequestUri);
         }
 
         /// <summary>

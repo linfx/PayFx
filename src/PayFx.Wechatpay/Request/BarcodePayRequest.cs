@@ -1,5 +1,5 @@
 ﻿using System;
-using PayFx.Response;
+using PayFx.Http;
 using PayFx.Wechatpay.Domain;
 using PayFx.Wechatpay.Response;
 
@@ -9,7 +9,7 @@ namespace PayFx.Wechatpay.Request
     {
         public BarcodePayRequest()
         {
-            RequestUrl = "/pay/micropay";
+            RequestUri = "/pay/micropay";
         }
 
         /// <summary>

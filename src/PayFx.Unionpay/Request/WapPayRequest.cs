@@ -7,7 +7,7 @@ namespace PayFx.Unionpay.Request
     {
         public WapPayRequest()
         {
-            RequestUrl = "/gateway/api/frontTransReq.do";
+            RequestUri = "/gateway/api/frontTransReq.do";
         }
     }
 }

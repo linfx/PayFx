@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
-using PayFx.Request;
+using PayFx.Http;
 
 namespace PayFx
 {
     /// <summary>
     /// 未知网关
     /// </summary>
-    public class NullGateway : BaseGateway
+    public class NullGateway : Gateway
     {
         public override string GatewayUrl { get; set; }
 

@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace PayFx.Utils
+namespace PayFx.Http
 {
     public enum StringCase
     {

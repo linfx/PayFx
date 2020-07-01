@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using PayFx.Response;
-using PayFx.Utils;
 
-namespace PayFx.Request
+namespace PayFx.Http
 {
     public abstract class Request<TModel, TResponse> where TResponse : IResponse
     {
@@ -19,7 +17,7 @@ namespace PayFx.Request
         /// <summary>
         /// 请求地址
         /// </summary>
-        public string RequestUrl { get; set; }
+        public string RequestUri { get; set; }
 
         /// <summary>
         /// 异步通知地址

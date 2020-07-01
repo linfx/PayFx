@@ -1,5 +1,5 @@
 ﻿using PayFx.Alipay.Request;
-using PayFx.Response;
+using PayFx.Http;
 
 namespace PayFx.Alipay.Response
 {
@@ -7,7 +7,7 @@ namespace PayFx.Alipay.Response
     {
         public WapPayResponse(WapPayRequest request)
         {
-            Url = $"{request.RequestUrl}&{request.GatewayData.ToUrl()}";
+            Url = $"{request.RequestUri}&{request.GatewayData.ToUrl()}";
         }
 
         /// <summary>

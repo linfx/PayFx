@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
-using PayFx.Request;
-using PayFx.Response;
+﻿using System;
+using System.Threading.Tasks;
+using PayFx.Http;
 using PayFx.Utils;
 
 namespace PayFx
@@ -8,14 +8,14 @@ namespace PayFx
     /// <summary>
     /// 网关的抽象基类
     /// </summary>
-    public abstract class BaseGateway : IGateway
+    public abstract class Gateway : IGateway
     {
         #region 构造函数
 
         /// <summary>
         /// 构造函数
         /// </summary>
-        protected BaseGateway()
+        protected Gateway()
         {
         }
 
@@ -23,7 +23,7 @@ namespace PayFx
         /// 构造函数
         /// </summary>
         /// <param name="merchant">商户数据</param>
-        protected BaseGateway(IMerchant merchant)
+        protected Gateway(IMerchant merchant)
         {
             Merchant = merchant;
         }
@@ -75,8 +75,6 @@ namespace PayFx
 
         #endregion
 
-        #region 方法
-
         /// <summary>
         /// 检验网关返回的通知，确认订单是否支付成功
         /// </summary>
@@ -107,6 +105,9 @@ namespace PayFx
         /// <returns></returns>
         public abstract TResponse Execute<TModel, TResponse>(Request<TModel, TResponse> request) where TResponse : IResponse;
 
-        #endregion
+        public virtual Task<TResponse> ExecuteAsync<TModel, TResponse>(Request<TModel, TResponse> request) where TResponse : IResponse
+        {
+            throw new NotImplementedException();
+        }
     }
 }

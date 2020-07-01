@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -9,9 +8,10 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using PayFx.Utils;
+using PayFx.Http;
 
 namespace PayFx
 {
@@ -20,43 +20,29 @@ namespace PayFx
     /// </summary>
     public class GatewayData
     {
-        #region 私有字段
-
-        private readonly SortedDictionary<string, object> _values;
-
-        #endregion
-
-        #region 属性
-
         public object this[string key]
         {
-            get => _values[key];
-            set => _values[key] = value;
+            get => Values[key];
+            set => Values[key] = value;
         }
 
-        public SortedDictionary<string, object>.KeyCollection Keys => _values.Keys;
+        public SortedDictionary<string, object> Values { get; }
 
-        public SortedDictionary<string, object>.ValueCollection Values => _values.Values;
+        public KeyValuePair<string, object> this[int index] => Values.ElementAt(index);
 
-        public KeyValuePair<string, object> this[int index] => _values.ElementAt(index);
-
-        public int Count => _values.Count;
+        public int Count => Values.Count;
 
         /// <summary>
         /// 原始值
         /// </summary>
         public string Raw { get; set; }
 
-        #endregion
-
-        #region 构造函数
-
         /// <summary>
         /// 构造函数
         /// </summary>
         public GatewayData()
         {
-            _values = new SortedDictionary<string, object>();
+            Values = new SortedDictionary<string, object>();
         }
 
         /// <summary>
@@ -65,12 +51,8 @@ namespace PayFx
         /// <param name="comparer">排序策略</param>
         public GatewayData(IComparer<string> comparer)
         {
-            _values = new SortedDictionary<string, object>(comparer);
+            Values = new SortedDictionary<string, object>(comparer);
         }
-
-        #endregion
-
-        #region 方法
 
         /// <summary>
         /// 添加参数
@@ -93,11 +75,11 @@ namespace PayFx
 
             if (Exists(key))
             {
-                _values[key] = value;
+                Values[key] = value;
             }
             else
             {
-                _values.Add(key, value);
+                Values.Add(key, value);
             }
 
             return true;
@@ -164,11 +146,11 @@ namespace PayFx
 
                 if (Exists(key))
                 {
-                    _values[key] = value;
+                    Values[key] = value;
                 }
                 else
                 {
-                    _values.Add(key, value);
+                    Values.Add(key, value);
                 }
             }
         }
@@ -180,7 +162,7 @@ namespace PayFx
         /// <returns>参数值</returns>
         public object GetValue(string key)
         {
-            _values.TryGetValue(key, out var value);
+            Values.TryGetValue(key, out var value);
             return value;
         }
 
@@ -287,7 +269,7 @@ namespace PayFx
         /// </summary>
         /// <param name="key">参数名</param>
         /// <returns></returns>
-        public bool Exists(string key) => _values.ContainsKey(key);
+        public bool Exists(string key) => Values.ContainsKey(key);
 
         /// <summary>
         /// 将网关数据转成Xml格式数据
@@ -295,14 +277,14 @@ namespace PayFx
         /// <returns></returns>
         public string ToXml()
         {
-            if (_values.Count == 0)
+            if (Values.Count == 0)
             {
                 return string.Empty;
             }
 
             var sb = new StringBuilder();
             sb.Append("<xml>");
-            foreach (var item in _values)
+            foreach (var item in Values)
             {
                 if (item.Value is string)
                 {
@@ -359,7 +341,7 @@ namespace PayFx
         public string ToUrl(bool isUrlEncode = true)
         {
             return string.Join("&",
-                _values
+                Values
                 .Select(a => $"{a.Key}={(isUrlEncode ? WebUtility.UrlEncode(a.Value.ToString()) : a.Value.ToString())}"));
         }
 
@@ -442,7 +424,7 @@ namespace PayFx
             var html = new StringBuilder();
             html.AppendLine("<body>");
             html.AppendLine($"<form name='gateway' method='post' action ='{url}'>");
-            foreach (var item in _values)
+            foreach (var item in Values)
             {
                 html.AppendLine($"<input type='hidden' name='{item.Key}' value='{item.Value}'>");
             }
@@ -461,7 +443,7 @@ namespace PayFx
         /// <returns></returns>
         public string ToJson()
         {
-            return JsonConvert.SerializeObject(_values);
+            return JsonConvert.SerializeObject(Values);
         }
 
         /// <summary>
@@ -572,7 +554,7 @@ namespace PayFx
         /// </summary>
         public void Clear()
         {
-            _values.Clear();
+            Values.Clear();
         }
 
         /// <summary>
@@ -582,9 +564,7 @@ namespace PayFx
         /// <returns></returns>
         public bool Remove(string key)
         {
-            return _values.Remove(key);
+            return Values.Remove(key);
         }
-
-        #endregion
     }
 }

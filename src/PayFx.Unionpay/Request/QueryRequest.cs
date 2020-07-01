@@ -7,7 +7,7 @@ namespace PayFx.Unionpay.Request
     {
         public QueryRequest()
         {
-            RequestUrl = "/gateway/api/queryTrans.do";
+            RequestUri = "/gateway/api/queryTrans.do";
         }
 
         public override void AddGatewayData(QueryModel model)

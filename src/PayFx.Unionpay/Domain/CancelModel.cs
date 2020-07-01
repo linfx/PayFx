@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using PayFx;
 
 namespace PayFx.Unionpay.Domain
 {
@@ -9,10 +8,10 @@ namespace PayFx.Unionpay.Domain
     {
         public CancelModel()
         {
-            BizType = "000000";
             TxnType = "31";
             TxnSubType = "00";
             ChannelType = "07";
+            BizType = "000000";
         }
 
         /// <summary>

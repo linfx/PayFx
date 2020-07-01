@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using PayFx;
 using PayFx.Utils;
 
 namespace PayFx.Wechatpay.Domain

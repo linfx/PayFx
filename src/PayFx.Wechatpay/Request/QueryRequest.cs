@@ -7,7 +7,7 @@ namespace PayFx.Wechatpay.Request
     {
         public QueryRequest()
         {
-            RequestUrl = "/pay/orderquery";
+            RequestUri = "/pay/orderquery";
         }
 
         internal override void Execute(Merchant merchant)

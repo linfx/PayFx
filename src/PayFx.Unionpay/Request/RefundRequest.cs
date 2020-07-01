@@ -7,7 +7,7 @@ namespace PayFx.Unionpay.Request
     {
         public RefundRequest()
         {
-            RequestUrl = "/gateway/api/backTransReq.do";
+            RequestUri = "/gateway/api/backTransReq.do";
         }
 
         internal override void Execute(Merchant merchant)

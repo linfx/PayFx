@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace PayFx.Utils
+namespace PayFx.Http
 {
     /// <summary>
     /// 验证工具类
@@ -19,7 +19,6 @@ namespace PayFx.Utils
             var validationContext = new ValidationContext(obj, data);
             var results = new List<ValidationResult>();
             var isValid = Validator.TryValidateObject(obj, validationContext, results, true);
-
             if (!isValid)
             {
                 throw new ArgumentNullException(results[0].ErrorMessage);

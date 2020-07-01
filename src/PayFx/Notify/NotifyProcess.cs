@@ -27,10 +27,10 @@ namespace PayFx
         /// </summary>
         /// <param name="gateways">网关列表</param>
         /// <returns></returns>
-        public static async Task<BaseGateway> GetGatewayAsync(IGateways gateways)
+        public static async Task<Gateway> GetGatewayAsync(IGateways gateways)
         {
             var gatewayData = await ReadNotifyDataAsync();
-            BaseGateway gateway = null;
+            Gateway gateway = null;
 
             foreach (var item in gateways.GetList())
             {

@@ -7,11 +7,7 @@ namespace PayFx.Unionpay.Request
     {
         public BillDownloadRequest()
         {
-#if DEBUG
-            RequestUrl = "https://filedownload.test.95516.com/";
-#else
-            RequestUrl = "https://filedownload.95516.com/";
-#endif
+            RequestUri = "https://filedownload.95516.com/";
         }
 
         internal override void Execute(Merchant merchant)

@@ -1,5 +1,5 @@
 ﻿using System;
-using PayFx.Response;
+using PayFx.Http;
 using PayFx.Utils;
 
 namespace PayFx
@@ -9,27 +9,17 @@ namespace PayFx
     /// </summary>
     public abstract class NotifyEventArgs : EventArgs
     {
-        #region 私有字段
-
-        protected BaseGateway _gateway;
-
-        #endregion
-
-        #region 构造函数
+        protected Gateway Gateway;
 
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="gateway">支付网关</param>
-        protected NotifyEventArgs(BaseGateway gateway)
+        protected NotifyEventArgs(Gateway gateway)
         {
-            _gateway = gateway;
+            Gateway = gateway;
             NotifyServerHostAddress = HttpUtil.RemoteIpAddress;
         }
-
-        #endregion
-
-        #region 属性
 
         /// <summary>
         /// 发送支付通知的网关IP地址
@@ -39,23 +29,21 @@ namespace PayFx
         /// <summary>
         /// 网关的数据
         /// </summary>
-        public GatewayData GatewayData => _gateway.GatewayData;
+        public GatewayData GatewayData => Gateway.GatewayData;
 
         /// <summary>
         /// 网关类型
         /// </summary>
-        public Type GatewayType => _gateway.GetType();
+        public Type GatewayType => Gateway.GetType();
 
         /// <summary>
         /// 通知数据
         /// </summary>
-        public IResponse NotifyResponse => _gateway.NotifyResponse;
+        public IResponse NotifyResponse => Gateway.NotifyResponse;
 
         /// <summary>
         /// 通知类型
         /// </summary>
         public NotifyType NotifyType => HttpUtil.RequestType == "GET" ? NotifyType.Sync : NotifyType.Async;
-
-        #endregion
     }
 }

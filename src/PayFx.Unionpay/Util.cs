@@ -12,7 +12,7 @@ using Org.BouncyCastle.Utilities.Collections;
 using Org.BouncyCastle.X509;
 using Org.BouncyCastle.X509.Store;
 using PayFx.Unionpay.Properties;
-using PayFx.Utils;
+using PayFx.Http;
 
 namespace PayFx.Unionpay
 {
@@ -20,9 +20,9 @@ namespace PayFx.Unionpay
     {
         private static string _aliase;
         private static Pkcs12Store _pkcs12Store;
-        private static X509Certificate ACPENCCER = null;
-        private static X509Certificate ACPROOTCER = null;
-        private static X509Certificate ACPMIDDLECER = null;
+        private static X509Certificate ACPENCCER;
+        private static X509Certificate ACPROOTCER;
+        private static X509Certificate ACPMIDDLECER;
 
         #region 证书操作
 

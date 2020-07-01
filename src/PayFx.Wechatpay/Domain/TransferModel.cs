@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using PayFx;
+using PayFx.Http;
 using PayFx.Utils;
 
 namespace PayFx.Wechatpay.Domain
@@ -64,7 +64,6 @@ namespace PayFx.Wechatpay.Domain
             {
                 yield return new ValidationResult("请设置收款用户真实姓名");
             }
-
             yield return ValidationResult.Success;
         }
     }

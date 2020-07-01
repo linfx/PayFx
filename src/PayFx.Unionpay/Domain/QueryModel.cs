@@ -7,8 +7,8 @@ namespace PayFx.Unionpay.Domain
     {
         public QueryModel()
         {
-            BizType = "000000";
             TxnType = "00";
+            BizType = "000000";
         }
 
         /// <summary>

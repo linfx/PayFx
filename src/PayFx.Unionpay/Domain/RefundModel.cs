@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using PayFx;
 
 namespace PayFx.Unionpay.Domain
 {
@@ -9,10 +8,10 @@ namespace PayFx.Unionpay.Domain
     {
         public RefundModel()
         {
-            BizType = "000000";
             TxnType = "04";
             TxnSubType = "00";
             ChannelType = "07";
+            BizType = "000000";
         }
 
         /// <summary>
@@ -84,7 +83,6 @@ namespace PayFx.Unionpay.Domain
             {
                 yield return new ValidationResult("原交易查询流水号和原交易商户订单号不能同时为空");
             }
-
             yield return ValidationResult.Success;
         }
     }

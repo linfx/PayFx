@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using PayFx;
-using PayFx.Request;
+using PayFx.Http;
 using PayFx.Wechatpay.Domain;
 using PayFx.Wechatpay.Request;
 

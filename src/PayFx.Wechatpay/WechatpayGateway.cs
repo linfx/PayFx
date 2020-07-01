@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
-using PayFx.Exceptions;
-using PayFx.Request;
+using PayFx.Http;
 using PayFx.Utils;
 using PayFx.Wechatpay.Request;
 using PayFx.Wechatpay.Response;
@@ -12,7 +11,7 @@ namespace PayFx.Wechatpay
     /// <summary>
     /// 微信支付网关
     /// </summary>
-    public sealed class WechatpayGateway : BaseGateway
+    public sealed class WechatpayGateway : Gateway
     {
         /// <summary>
         /// 初始化微信支付网关
@@ -29,11 +28,7 @@ namespace PayFx.Wechatpay
         /// </summary>
         /// <param name="merchant">商户数据</param>
         public WechatpayGateway(IOptions<Merchant> merchant)
-            : this(merchant.Value)
-        {
-        }
-
-        #region 属性
+            : this(merchant.Value) { }
 
         public override string GatewayUrl { get; set; } = "https://api.mch.weixin.qq.com";
 
@@ -52,10 +47,6 @@ namespace PayFx.Wechatpay
             "appid", "return_code", "mch_id", "nonce_str"
         };
 
-        #endregion
-
-        #region 方法
-
         protected override async Task<bool> ValidateNotifyAsync()
         {
             base.NotifyResponse = await GatewayData.ToObjectAsync<NotifyResponse>(StringCase.Snake);
@@ -63,7 +54,7 @@ namespace PayFx.Wechatpay
 
             if (NotifyResponse.ReturnCode != "SUCCESS")
             {
-                throw new GatewayException("不是成功的返回码");
+                throw new PayFxException("不是成功的返回码");
             }
 
             if (string.IsNullOrEmpty(NotifyResponse.ReqInfo))
@@ -71,7 +62,7 @@ namespace PayFx.Wechatpay
                 NotifyResponse.Coupons = ConvertUtil.ToList<CouponResponse, object>(GatewayData, -1);
                 if (NotifyResponse.Sign != SubmitProcess.BuildSign(GatewayData, Merchant.Key))
                 {
-                    throw new GatewayException("签名不一致");
+                    throw new PayFxException("签名不一致");
                 }
             }
             else
@@ -118,7 +109,5 @@ namespace PayFx.Wechatpay
 
             return SubmitProcess.Execute(Merchant, request, GatewayUrl);
         }
-
-        #endregion
     }
 }

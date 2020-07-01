@@ -2,9 +2,8 @@
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using PayFx.Exceptions;
 
-namespace PayFx.Utils
+namespace PayFx.Http
 {
     /// <summary>
     /// 加密工具类
@@ -92,7 +91,7 @@ namespace PayFx.Utils
 
                 if (null == rsaCsp)
                 {
-                    throw new GatewayException("您使用的私钥格式错误，请检查RSA私钥配置" + ",charset = " + charset);
+                    throw new PayFxException("您使用的私钥格式错误，请检查RSA私钥配置" + ",charset = " + charset);
                 }
 
                 if ("RSA2".Equals(signType))
@@ -106,7 +105,7 @@ namespace PayFx.Utils
             }
             catch
             {
-                throw new GatewayException("您使用的私钥格式错误，请检查RSA私钥配置" + ",charset = " + charset);
+                throw new PayFxException("您使用的私钥格式错误，请检查RSA私钥配置" + ",charset = " + charset);
             }
 
             return Convert.ToBase64String(signatureBytes);

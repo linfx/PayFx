@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using PayFx.Request;
+using PayFx.Http;
 using PayFx.Unionpay.Domain;
 using PayFx.Unionpay.Request;
 
@@ -9,7 +9,7 @@ namespace PayFx.Unionpay.Response
     public class BarcodePayResponse : BaseResponse
     {
         /// <summary>
-        /// 查询流水号	
+        /// 查询流水号
         /// </summary>
         public string QueryId { get; set; }
 
@@ -29,16 +29,7 @@ namespace PayFx.Unionpay.Response
             if (RespCode == "05")
             {
                 var queryResponse = new QueryResponse();
-                Task.Run(async () =>
-                {
-                    queryResponse = await PollQueryTradeStateAsync(
-                        barcodePayRequest.Model.OrderId,
-                        barcodePayRequest.PollTime,
-                        barcodePayRequest.PollCount);
-                })
-                .GetAwaiter()
-                .GetResult();
-
+                PollQueryTradeStateAsync(barcodePayRequest.Model.OrderId, barcodePayRequest.PollTime, barcodePayRequest.PollCount).GetAwaiter().GetResult();
                 if (queryResponse != null)
                 {
                     barcodePayRequest.OnPaySucceed(queryResponse, null);
@@ -61,7 +52,7 @@ namespace PayFx.Unionpay.Response
         /// <param name="pollTime">轮询间隔</param>
         /// <param name="pollCount">轮询次数</param>
         /// <returns></returns>
-        private QueryResponse PollQueryTradeState(string outTradeNo, int pollTime, int pollCount)
+        private async Task<QueryResponse> PollQueryTradeStateAsync(string outTradeNo, int pollTime, int pollCount)
         {
             for (var i = 0; i < pollCount; i++)
             {
@@ -70,12 +61,11 @@ namespace PayFx.Unionpay.Response
                 {
                     OrderId = outTradeNo
                 });
-                var queryResponse = SubmitProcess.Execute(_merchant, queryRequest);
+                var queryResponse = await SubmitProcess.ExecuteAsync(_merchant, queryRequest);
                 if (queryResponse.RespCode == "00")
                 {
                     return queryResponse;
                 }
-
                 Thread.Sleep(pollTime);
             }
 
@@ -85,21 +75,8 @@ namespace PayFx.Unionpay.Response
             {
                 OrderId = outTradeNo
             });
-            SubmitProcess.Execute(_merchant, cancelRequest);
-
+            await SubmitProcess.ExecuteAsync(_merchant, cancelRequest);
             return null;
-        }
-
-        /// <summary>
-        /// 轮询查询用户是否支付
-        /// </summary>
-        /// <param name="outTradeNo">订单号</param>
-        /// <param name="pollTime">轮询间隔</param>
-        /// <param name="pollCount">轮询次数</param>
-        /// <returns></returns>
-        private async Task<QueryResponse> PollQueryTradeStateAsync(string outTradeNo, int pollTime, int pollCount)
-        {
-            return await Task.Run(() => PollQueryTradeState(outTradeNo, pollTime, pollCount));
         }
     }
 }

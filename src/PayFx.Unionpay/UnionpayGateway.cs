@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
-using PayFx.Request;
-using PayFx.Utils;
+using Org.BouncyCastle.Crypto;
+using PayFx.Http;
 using PayFx.Unionpay.Request;
 using PayFx.Unionpay.Response;
+using PayFx.Utils;
 
 namespace PayFx.Unionpay
 {
     /// <summary>
     /// 中国银联网关
     /// </summary>
-    public sealed class UnionpayGateway : BaseGateway
+    public sealed class UnionpayGateway : Gateway
     {
         /// <summary>
         /// 初始化中国银联网关
@@ -62,7 +63,16 @@ namespace PayFx.Unionpay
             {
                 return SubmitProcess.SdkExecute(Merchant, request, GatewayUrl);
             }
-            return SubmitProcess.Execute(Merchant, request, GatewayUrl);
+            return SubmitProcess.ExecuteAsync(Merchant, request, GatewayUrl).Result;
+        }
+
+        public override Task<TResponse> ExecuteAsync<TModel, TResponse>(Request<TModel, TResponse> request)
+        {
+            if (request is WebPayRequest || request is WapPayRequest)
+            {
+                return SubmitProcess.SdkExecuteAsync(Merchant, request, GatewayUrl);
+            }
+            return SubmitProcess.ExecuteAsync(Merchant, request, GatewayUrl);
         }
 
         protected override void WriteFailureFlag()

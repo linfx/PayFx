@@ -7,7 +7,7 @@ namespace PayFx.Wechatpay.Request
     {
         public FundFlowDownloadRequest()
         {
-            RequestUrl = "/pay/downloadfundflow";
+            RequestUri = "/pay/downloadfundflow";
             IsUseCert = true;
         }
 

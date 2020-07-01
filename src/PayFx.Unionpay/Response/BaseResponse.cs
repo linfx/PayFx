@@ -1,5 +1,4 @@
-﻿using PayFx.Request;
-using PayFx.Response;
+﻿using PayFx.Http;
 
 namespace PayFx.Unionpay.Response
 {
@@ -186,6 +185,6 @@ namespace PayFx.Unionpay.Response
         /// </summary>
         public string Raw { get; set; }
 
-        internal abstract void Execute<TModel, TResponse>(Merchant merchant, Request<TModel, TResponse> request) where TResponse : IResponse;
+        internal virtual void Execute<TModel, TResponse>(Merchant merchant, Request<TModel, TResponse> request) where TResponse : IResponse { }
     }
 }

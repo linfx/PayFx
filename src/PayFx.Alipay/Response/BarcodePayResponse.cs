@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using PayFx.Alipay.Domain;
 using PayFx.Alipay.Request;
-using PayFx.Request;
+using PayFx.Http;
 
 namespace PayFx.Alipay.Response
 {

@@ -1,6 +1,7 @@
 ﻿using System.Text;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using PayFx.Response;
+using PayFx.Http;
 using PayFx.Unionpay;
 using PayFx.Unionpay.Domain;
 using PayFx.Unionpay.Request;
@@ -17,7 +18,7 @@ namespace PayFx.Demo.Controllers
         }
 
         [HttpPost]
-        public ActionResult WebPay(string order_id, int total_amount)
+        public async Task<ActionResult> WebPayAsync(string order_id, int total_amount)
         {
             var request = new WebPayRequest();
             request.AddGatewayData(new WebPayModel
@@ -25,12 +26,12 @@ namespace PayFx.Demo.Controllers
                 TotalAmount = total_amount,
                 OrderId = order_id
             });
-            var response = _gateway.Execute(request);
+            var response = await _gateway.ExecuteAsync(request);
             return Content(response.Html, "text/html", Encoding.UTF8);
         }
 
         [HttpPost]
-        public ActionResult WapPay(string order_id, int total_amount)
+        public async Task<ActionResult> WapPayAsync(string order_id, int total_amount)
         {
             var request = new WapPayRequest();
             request.AddGatewayData(new WapPayModel()
@@ -39,12 +40,12 @@ namespace PayFx.Demo.Controllers
                 OrderId = order_id
             });
 
-            var response = _gateway.Execute(request);
+            var response = await _gateway.ExecuteAsync(request);
             return Content(response.Html, "text/html", Encoding.UTF8);
         }
 
         [HttpPost]
-        public ActionResult AppPay(string order_id, int total_amount, string body)
+        public async Task<ActionResult> AppPayAsync(string order_id, int total_amount, string body)
         {
             var request = new AppPayRequest();
             request.AddGatewayData(new AppPayModel()
@@ -53,13 +54,12 @@ namespace PayFx.Demo.Controllers
                 TotalAmount = total_amount,
                 OrderId = order_id
             });
-
-            var response = _gateway.Execute(request);
+            var response = await _gateway.ExecuteAsync(request);
             return Json(response);
         }
 
         [HttpPost]
-        public ActionResult ScanPay(string order_id, int total_amount)
+        public async Task<ActionResult> ScanPayAsync(string order_id, int total_amount)
         {
             var request = new ScanPayRequest();
             request.AddGatewayData(new ScanPayModel()
@@ -67,14 +67,12 @@ namespace PayFx.Demo.Controllers
                 TotalAmount = total_amount,
                 OrderId = order_id
             });
-
-            var response = _gateway.Execute(request);
-
+            var response = await _gateway.ExecuteAsync(request);
             return Json(response);
         }
 
         [HttpPost]
-        public ActionResult BarcodePay(string order_id, string qr_no, int total_amount)
+        public async Task<ActionResult> BarcodePayAsync(string order_id, string qr_no, int total_amount)
         {
             var request = new BarcodePayRequest();
             request.AddGatewayData(new BarcodePayModel()
@@ -85,9 +83,7 @@ namespace PayFx.Demo.Controllers
             });
             request.PaySucceed += BarcodePay_PaySucceed;
             request.PayFailed += BarcodePay_PayFaild;
-
-            var response = _gateway.Execute(request);
-
+            var response = await _gateway.ExecuteAsync(request);
             return Json(response);
         }
 
@@ -110,7 +106,7 @@ namespace PayFx.Demo.Controllers
         }
 
         [HttpPost]
-        public ActionResult Query(string order_id, string query_id)
+        public async Task<ActionResult> QueryAsync(string order_id, string query_id)
         {
             var request = new QueryRequest();
             request.AddGatewayData(new QueryModel()
@@ -118,13 +114,12 @@ namespace PayFx.Demo.Controllers
                 OrderId = order_id,
                 QueryId = query_id
             });
-
-            var response = _gateway.Execute(request);
+            var response = await _gateway.ExecuteAsync(request);
             return Json(response);
         }
 
         [HttpPost]
-        public ActionResult Refund(string order_id, int refund_amount, string orig_qry_id, string orig_order_id)
+        public async Task<ActionResult> RefundAsync(string order_id, int refund_amount, string orig_qry_id, string orig_order_id)
         {
             var request = new RefundRequest();
             request.AddGatewayData(new RefundModel()
@@ -134,13 +129,12 @@ namespace PayFx.Demo.Controllers
                 OrigOrderId = orig_order_id,
                 OrigQryId = orig_qry_id
             });
-
-            var response = _gateway.Execute(request);
+            var response = await _gateway.ExecuteAsync(request);
             return Json(response);
         }
 
         [HttpPost]
-        public ActionResult Cancel(string order_id, int cancel_amount, string orig_qry_id, string orig_order_id)
+        public async Task<ActionResult> CancelAsync(string order_id, int cancel_amount, string orig_qry_id, string orig_order_id)
         {
             var request = new CancelRequest();
             request.AddGatewayData(new CancelModel()
@@ -150,21 +144,19 @@ namespace PayFx.Demo.Controllers
                 OrigOrderId = orig_order_id,
                 OrigQryId = orig_qry_id
             });
-
-            var response = _gateway.Execute(request);
+            var response = await _gateway.ExecuteAsync(request);
             return Json(response);
         }
 
         [HttpPost]
-        public ActionResult BillDownload(string bill_date)
+        public async Task<ActionResult> BillDownloadAsync(string bill_date)
         {
             var request = new BillDownloadRequest();
             request.AddGatewayData(new BillDownloadModel()
             {
                 BillDate = bill_date
             });
-
-            var response = _gateway.Execute(request);
+            var response = await _gateway.ExecuteAsync(request);
             return File(response.GetBillFile(), "application/zip");
         }
     }

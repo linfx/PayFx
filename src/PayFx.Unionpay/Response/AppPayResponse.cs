@@ -1,6 +1,4 @@
-﻿using PayFx.Request;
-
-namespace PayFx.Unionpay.Response
+﻿namespace PayFx.Unionpay.Response
 {
     public class AppPayResponse : BaseResponse
     {
@@ -8,9 +6,5 @@ namespace PayFx.Unionpay.Response
         /// 银联受理订单号
         /// </summary>
         public string Tn { get; set; }
-
-        internal override void Execute<TModel, TResponse>(Merchant merchant, Request<TModel, TResponse> request)
-        {
-        }
     }
 }

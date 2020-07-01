@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
-using PayFx.Exceptions;
-using PayFx.Request;
-using PayFx.Response;
+using PayFx.Http;
 using PayFx.Utils;
 using PayFx.Wechatpay.Request;
 using PayFx.Wechatpay.Response;
@@ -27,7 +25,7 @@ namespace PayFx.Wechatpay
                 cert = new X509Certificate2(merchant.SslCertPath, merchant.SslCertPassword, X509KeyStorageFlags.MachineKeySet);
             }
 
-            var result = HttpUtil.Post(request.RequestUrl, request.GatewayData.ToXml(), cert);
+            var result = HttpUtil.Post(request.RequestUri, request.GatewayData.ToXml(), cert);
 
             BaseResponse baseResponse;
             if (!(request is BillDownloadRequest || request is FundFlowDownloadRequest))
@@ -44,7 +42,7 @@ namespace PayFx.Wechatpay
 
                     if (!string.IsNullOrEmpty(sign) && !CheckSign(gatewayData, merchant.Key, sign))
                     {
-                        throw new GatewayException("签名验证失败");
+                        throw new PayFxException("签名验证失败");
                     }
 
                     baseResponse.Sign = sign;
@@ -69,7 +67,7 @@ namespace PayFx.Wechatpay
             Task.Run(async () =>
             {
                 result = await HttpUtil
-                 .GetAsync($"{request.RequestUrl}?{request.GatewayData.ToUrl()}");
+                 .GetAsync($"{request.RequestUri}?{request.GatewayData.ToUrl()}");
             })
             .GetAwaiter()
             .GetResult();
@@ -91,9 +89,9 @@ namespace PayFx.Wechatpay
                 _gatewayUrl = gatewayUrl;
             }
 
-            if (!request.RequestUrl.StartsWith("http"))
+            if (!request.RequestUri.StartsWith("http"))
             {
-                request.RequestUrl = _gatewayUrl + request.RequestUrl;
+                request.RequestUri = _gatewayUrl + request.RequestUri;
             }
             request.GatewayData.Add(merchant, StringCase.Snake);
             ((BaseRequest<TModel, TResponse>)request).Execute(merchant);

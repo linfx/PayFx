@@ -7,7 +7,7 @@ namespace PayFx.Wechatpay.Request
     {
         public BillDownloadRequest()
         {
-            RequestUrl = "/pay/downloadbill";
+            RequestUri = "/pay/downloadbill";
         }
 
         internal override void Execute(Merchant merchant)

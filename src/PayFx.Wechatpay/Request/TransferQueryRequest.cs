@@ -7,7 +7,7 @@ namespace PayFx.Wechatpay.Request
     {
         public TransferQueryRequest()
         {
-            RequestUrl = "/mmpaymkttransfers/gettransferinfo";
+            RequestUri = "/mmpaymkttransfers/gettransferinfo";
             IsUseCert = true;
         }
 

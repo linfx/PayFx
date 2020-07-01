@@ -6,9 +6,9 @@ namespace PayFx.Unionpay.Domain
     {
         public ScanPayModel()
         {
-            BizType = "000000";
             TxnType = "01";
             TxnSubType = "07";
+            BizType = "000000";
         }
 
         /// <summary>

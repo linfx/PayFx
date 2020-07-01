@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using PayFx.Exceptions;
 
 namespace PayFx
 {
@@ -9,21 +8,19 @@ namespace PayFx
     /// </summary>
     public class Gateways : IGateways
     {
-        private readonly ICollection<BaseGateway> _list = new List<BaseGateway>();
+        private readonly ICollection<Gateway> _list = new List<Gateway>();
 
         /// <summary>
         /// 网关数量
         /// </summary>
         public int Count => _list.Count;
 
-        #region 方法
-
         /// <summary>
         /// 添加网关
         /// </summary>
         /// <param name="gateway">网关</param>
         /// <returns></returns>
-        public bool Add(BaseGateway gateway)
+        public bool Add(Gateway gateway)
         {
             if (gateway != null)
             {
@@ -35,7 +32,7 @@ namespace PayFx
                 }
                 else
                 {
-                    throw new GatewayException("该商户数据已存在");
+                    throw new PayFxException("该商户数据已存在");
                 }
             }
 
@@ -47,13 +44,13 @@ namespace PayFx
         /// </summary>
         /// <typeparam name="T">网关类型</typeparam>
         /// <returns></returns>
-        public BaseGateway Get<T>()
+        public Gateway Get<T>()
         {
             var gatewayList = _list
                 .Where(a => a is T)
                 .ToList();
 
-            return gatewayList.Count > 0 ? gatewayList[0] : throw new GatewayException("找不到指定网关");
+            return gatewayList.Count > 0 ? gatewayList[0] : throw new PayFxException("找不到指定网关");
         }
 
         /// <summary>
@@ -62,13 +59,13 @@ namespace PayFx
         /// <typeparam name="T">网关类型</typeparam>
         /// <param name="appId">AppId</param>
         /// <returns></returns>
-        public BaseGateway Get<T>(string appId)
+        public Gateway Get<T>(string appId)
         {
             var gatewayList = _list
                 .Where(a => a is T && a.Merchant.AppId == appId)
                 .ToList();
 
-            var gateway = gatewayList.Count > 0 ? gatewayList[0] : throw new GatewayException("找不到指定网关");
+            var gateway = gatewayList.Count > 0 ? gatewayList[0] : throw new PayFxException("找不到指定网关");
 
             return gateway;
         }
@@ -84,11 +81,9 @@ namespace PayFx
         /// 获取网关列表
         /// </summary>
         /// <returns></returns>
-        public ICollection<BaseGateway> GetList()
+        public ICollection<Gateway> GetList()
         {
             return _list;
         }
-
-        #endregion
     }
 }

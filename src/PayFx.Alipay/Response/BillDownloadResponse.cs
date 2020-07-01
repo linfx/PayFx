@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using PayFx.Request;
+using PayFx.Http;
 using PayFx.Utils;
 
 namespace PayFx.Alipay.Response

@@ -1,11 +1,11 @@
-﻿using PayFx.Unionpay;
-using PayFx;
-using PayFx.Request;
+﻿using PayFx.Http;
 
 namespace PayFx.Unionpay.Response
 {
     public class BillDownloadResponse : BaseResponse
     {
+        private byte[] _billFile;
+
         /// <summary>
         /// 批量文件内容
         /// </summary>
@@ -34,8 +34,6 @@ namespace PayFx.Unionpay.Response
         {
             return _billFile;
         }
-
-        private byte[] _billFile;
 
         internal override void Execute<TModel, TResponse>(Merchant merchant, Request<TModel, TResponse> request)
         {

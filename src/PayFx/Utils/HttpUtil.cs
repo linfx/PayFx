@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.IO;
+using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace PayFx.Utils
 {
@@ -127,8 +129,6 @@ namespace PayFx.Utils
         /// </summary>
         public static string QueryString => Current.Request.QueryString.ToString();
 
-        #region 方法
-
         /// <summary>
         /// 跳转到指定链接
         /// </summary>
@@ -205,6 +205,26 @@ namespace PayFx.Utils
             return await Task.Run(() => Get(url));
         }
 
+        public static Task<HttpContent> PostAsync(string requestUri, GatewayData data, X509Certificate2 cert = default)
+        {
+            var dic = data.Values.ToDictionary(name => name.Key, value => value.Value.ToString());
+            var content = new FormUrlEncodedContent(dic);
+            return PostAsync(requestUri, content, cert);
+        }
+
+        public static async Task<HttpContent> PostAsync(string requestUri, HttpContent content, X509Certificate2 cert = default)
+        {
+            //var handler = new HttpClientHandler
+            //{
+            //    ServerCertificateCustomValidationCallback = (message, cert, chain, error) => true,
+            //    ClientCertificateOptions = ClientCertificateOption.Manual,
+            //    ClientCertificates = { cert }
+            //};
+            var client = new HttpClient();
+            var response = await client.PostAsync(requestUri, content);
+            return response.Content;
+        }
+
         /// <summary>
         /// Post请求
         /// </summary>
@@ -216,8 +236,7 @@ namespace PayFx.Utils
         {
             if (url.StartsWith("https", StringComparison.OrdinalIgnoreCase))
             {
-                ServicePointManager.ServerCertificateValidationCallback =
-                        new RemoteCertificateValidationCallback(CheckValidationResult);
+                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(CheckValidationResult);
             }
 
             var dataByte = Encoding.UTF8.GetBytes(data);
@@ -268,7 +287,5 @@ namespace PayFx.Utils
             using var webClient = new WebClient();
             return await webClient.DownloadDataTaskAsync(url);
         }
-
-        #endregion
     }
 }

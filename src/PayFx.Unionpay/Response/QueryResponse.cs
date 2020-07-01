@@ -1,8 +1,4 @@
-﻿using PayFx.Unionpay;
-using PayFx;
-using PayFx.Request;
-
-namespace PayFx.Unionpay.Response
+﻿namespace PayFx.Unionpay.Response
 {
     public class QueryResponse : BaseResponse
     {
@@ -101,9 +97,5 @@ namespace PayFx.Unionpay.Response
         /// 支付卡名称
         /// </summary>
         public string PayCardIssueName { get; set; }
-
-        internal override void Execute<TModel, TResponse>(Merchant merchant, Request<TModel, TResponse> request)
-        {
-        }
     }
 }

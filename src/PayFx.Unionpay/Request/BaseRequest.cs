@@ -1,7 +1,5 @@
 ﻿using System;
-using PayFx.Request;
-using PayFx.Response;
-using PayFx.Utils;
+using PayFx.Http;
 
 namespace PayFx.Unionpay.Request
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
-using PayFx.Request;
+using PayFx.Http;
 
 namespace PayFx.Alipay.Response
 {

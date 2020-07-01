@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using PayFx.Response;
+using PayFx.Http;
 using PayFx.Wechatpay;
 using PayFx.Wechatpay.Domain;
 using PayFx.Wechatpay.Request;
@@ -188,7 +188,6 @@ namespace PayFx.Demo.Controllers
             {
                 OutTradeNo = out_trade_no
             });
-
             var response = _gateway.Execute(request);
             return Json(response);
         }
@@ -201,7 +200,6 @@ namespace PayFx.Demo.Controllers
             {
                 OutTradeNo = out_trade_no
             });
-
             var response = _gateway.Execute(request);
             return Json(response);
         }
@@ -219,7 +217,6 @@ namespace PayFx.Demo.Controllers
                 CheckName = check_name,
                 TrueName = true_name
             });
-
             var response = _gateway.Execute(request);
             return Json(response);
         }
@@ -232,7 +229,6 @@ namespace PayFx.Demo.Controllers
             {
                 OutTradeNo = out_trade_no
             });
-
             var response = _gateway.Execute(request);
             return Json(response);
         }
@@ -241,7 +237,6 @@ namespace PayFx.Demo.Controllers
         public ActionResult PublicKey()
         {
             var request = new PublicKeyRequest();
-
             var response = _gateway.Execute(request);
             return Json(response);
         }
@@ -259,7 +254,6 @@ namespace PayFx.Demo.Controllers
                 BankCode = bank_code,
                 TrueName = true_name
             });
-
             var response = _gateway.Execute(request);
             return Json(response);
         }
@@ -272,7 +266,6 @@ namespace PayFx.Demo.Controllers
             {
                 OutTradeNo = out_trade_no
             });
-
             var response = _gateway.Execute(request);
             return Json(response);
         }
@@ -286,7 +279,6 @@ namespace PayFx.Demo.Controllers
                 BillDate = bill_date,
                 BillType = bill_type
             });
-
             var response = _gateway.Execute(request);
             return File(response.GetBillFile(), "text/csv", $"{DateTime.Now.ToString("yyyyMMddHHmmss")}.csv");
         }
@@ -300,7 +292,6 @@ namespace PayFx.Demo.Controllers
                 BillDate = bill_date,
                 AccountType = account_type
             });
-
             var response = _gateway.Execute(request);
             return File(response.GetBillFile(), "text/csv", $"{DateTime.Now.ToString("yyyyMMddHHmmss")}.csv");
         }
@@ -313,7 +304,6 @@ namespace PayFx.Demo.Controllers
             {
                 Code = code
             });
-
             var response = _gateway.Execute(request);
             return Json(response);
         }

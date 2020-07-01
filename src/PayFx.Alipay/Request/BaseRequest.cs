@@ -1,6 +1,5 @@
-﻿using PayFx.Request;
-using PayFx.Response;
-using PayFx.Utils;
+﻿using PayFx.Http;
+using PayFx.Http;
 
 namespace PayFx.Alipay.Request
 {
@@ -8,7 +7,7 @@ namespace PayFx.Alipay.Request
     {
         public BaseRequest(string method)
         {
-            RequestUrl = "/gateway.do?charset=UTF-8";
+            RequestUri = "/gateway.do?charset=UTF-8";
             GatewayData.Add("method", method);
         }
 

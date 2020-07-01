@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using PayFx.Exceptions;
 using PayFx.Utils;
 
 namespace PayFx
@@ -127,7 +126,7 @@ namespace PayFx
                     gateway.WriteFailureFlag();
                 }
             }
-            catch (GatewayException ex)
+            catch (PayFxException ex)
             {
                 OnUnknownNotify(new UnKnownNotifyEventArgs(gateway)
                 {

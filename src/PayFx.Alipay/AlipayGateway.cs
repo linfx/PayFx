@@ -1,16 +1,15 @@
 ﻿using System.Threading.Tasks;
 using PayFx.Alipay.Request;
 using PayFx.Alipay.Response;
-using PayFx.Exceptions;
-using PayFx.Request;
-using PayFx.Utils;
+using PayFx.Http;
+using PayFx.Http;
 
 namespace PayFx.Alipay
 {
     /// <summary>
     /// 支付宝网关
     /// </summary>
-    public sealed class AlipayGateway : BaseGateway
+    public sealed class AlipayGateway : Gateway
     {
         private readonly Merchant _merchant;
 
@@ -52,7 +51,7 @@ namespace PayFx.Alipay
                 return true;
             }
 
-            throw new GatewayException("签名不一致");
+            throw new PayFxException("签名不一致");
         }
 
         public override TResponse Execute<TModel, TResponse>(Request<TModel, TResponse> request)

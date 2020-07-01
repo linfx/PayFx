@@ -7,7 +7,7 @@ namespace PayFx.Wechatpay.Request
     {
         public CancelRequest()
         {
-            RequestUrl = "/secapi/pay/reverse";
+            RequestUri = "/secapi/pay/reverse";
             IsUseCert = true;
         }
 

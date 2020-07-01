@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using PayFx.Alipay.Domain;
-using PayFx.Request;
+using PayFx.Http;
 
 namespace PayFx.Alipay.Response
 {

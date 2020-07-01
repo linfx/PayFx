@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using PayFx.Alipay.Domain;
-using PayFx.Request;
+using PayFx.Http;
 
 namespace PayFx.Alipay.Response
 {

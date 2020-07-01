@@ -1,4 +1,4 @@
-﻿using PayFx.Utils;
+﻿using PayFx.Http;
 using PayFx.Wechatpay.Response;
 
 namespace PayFx.Wechatpay.Request
@@ -7,7 +7,7 @@ namespace PayFx.Wechatpay.Request
     {
         public PublicKeyRequest()
         {
-            RequestUrl = "https://fraud.mch.weixin.qq.com/risk/getpublickey";
+            RequestUri = "https://fraud.mch.weixin.qq.com/risk/getpublickey";
             IsUseCert = true;
         }
 

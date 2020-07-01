@@ -1,15 +1,13 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace PayFx.Utils
+namespace PayFx.Http
 {
     /// <summary>
     /// 工具类
     /// </summary>
     public static class Util
     {
-        #region 方法
-
         /// <summary>
         /// 序列化对象
         /// </summary>
@@ -41,7 +39,5 @@ namespace PayFx.Utils
         {
             return (int)((time.ToUniversalTime().Ticks / 10000000) - 62135596800);
         }
-
-        #endregion
     }
 }

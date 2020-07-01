@@ -2,9 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PayFx.Alipay.Response;
-using PayFx.Exceptions;
-using PayFx.Request;
-using PayFx.Response;
+using PayFx.Http;
 using PayFx.Utils;
 
 namespace PayFx.Alipay
@@ -17,15 +15,14 @@ namespace PayFx.Alipay
         {
             AddMerchant(merchant, request, gatewayUrl);
 
-            var result = HttpUtil.Post(request.RequestUrl, request.GatewayData.ToUrl());
+            var result = HttpUtil.Post(request.RequestUri, request.GatewayData.ToUrl());
 
             var jObject = JObject.Parse(result);
             var jToken = jObject.First.First;
             var sign = jObject.Value<string>("sign");
-            if (!string.IsNullOrEmpty(sign) &&
-                !CheckSign(jToken.ToString(Formatting.None), sign, merchant.AlipayPublicKey, merchant.SignType))
+            if (!string.IsNullOrEmpty(sign) && !CheckSign(jToken.ToString(Formatting.None), sign, merchant.AlipayPublicKey, merchant.SignType))
             {
-                throw new GatewayException("签名验证失败");
+                throw new PayFxException("签名验证失败");
             }
 
             var baseResponse = (BaseResponse)jToken.ToObject(typeof(TResponse));
@@ -49,9 +46,9 @@ namespace PayFx.Alipay
                 _gatewayUrl = gatewayUrl;
             }
 
-            if (!request.RequestUrl.StartsWith("http"))
+            if (!request.RequestUri.StartsWith("http"))
             {
-                request.RequestUrl = _gatewayUrl + request.RequestUrl;
+                request.RequestUri = _gatewayUrl + request.RequestUri;
             }
             request.GatewayData.Add(merchant, StringCase.Snake);
             if (!string.IsNullOrEmpty(request.NotifyUrl))
