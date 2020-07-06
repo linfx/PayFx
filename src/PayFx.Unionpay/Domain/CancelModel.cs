@@ -72,7 +72,6 @@ namespace PayFx.Unionpay.Domain
             {
                 yield return new ValidationResult("原交易查询流水号和原交易商户订单号不能同时为空");
             }
-
             yield return ValidationResult.Success;
         }
     }

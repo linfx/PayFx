@@ -5,6 +5,8 @@ namespace PayFx.Alipay
 {
     public class Merchant : IMerchant
     {
+        private string _returnUrl;
+
         /// <summary>
         /// 应用ID
         /// </summary>
@@ -51,18 +53,17 @@ namespace PayFx.Alipay
         [Ignore]
         public string AlipayPublicKey { get; set; }
 
-        private string returnUrl;
         /// <summary>
         /// 返回地址
         /// </summary>
         public string ReturnUrl
         {
-            get => returnUrl;
+            get => _returnUrl;
             set
             {
                 if (value.StartsWith("http") || value.StartsWith("https"))
                 {
-                    returnUrl = value;
+                    _returnUrl = value;
                 }
                 else
                 {

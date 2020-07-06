@@ -433,7 +433,6 @@ namespace PayFx
             html.AppendLine("document.gateway.submit();");
             html.AppendLine("</script>");
             html.AppendLine("</body>");
-
             return html.ToString();
         }
 

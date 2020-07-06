@@ -74,7 +74,6 @@ namespace PayFx.Demo.Controllers
                 Subject = subject,
                 OutTradeNo = out_trade_no
             });
-
             var response = _gateway.Execute(request);
             return Json(response);
         }

@@ -42,10 +42,7 @@ namespace PayFx.Wechatpay
 
         protected override bool IsCancelSuccess { get; }
 
-        protected override string[] NotifyVerifyParameter => new string[]
-        {
-            "appid", "return_code", "mch_id", "nonce_str"
-        };
+        protected override string[] NotifyVerifyParameter => new string[] { "appid", "return_code", "mch_id", "nonce_str" };
 
         protected override async Task<bool> ValidateNotifyAsync()
         {

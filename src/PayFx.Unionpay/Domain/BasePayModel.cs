@@ -21,7 +21,7 @@ namespace PayFx.Unionpay.Domain
         /// 渠道类型
         /// </summary>
         [Required(ErrorMessage = "请设置渠道类型")]
-        public string ChannelType { get; protected set; } = "08";
+        public string ChannelType { get; set; } = "08";
 
         /// <summary>
         /// 商户订单号，不应含“-”或“_”

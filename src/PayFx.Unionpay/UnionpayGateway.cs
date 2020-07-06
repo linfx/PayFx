@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
-using Org.BouncyCastle.Crypto;
 using PayFx.Http;
 using PayFx.Unionpay.Request;
 using PayFx.Unionpay.Response;

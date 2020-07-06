@@ -4,9 +4,9 @@
     {
         public BarcodePayModel()
         {
-            BizType = "000000";
             TxnType = "01";
             TxnSubType = "06";
+            BizType = "000000";
         }
 
         /// <summary>

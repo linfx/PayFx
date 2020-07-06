@@ -18,7 +18,7 @@ namespace PayFx.Unionpay.Domain
         /// 001001：订购
         /// 000202：B2B
         /// </summary>
-        public string BizType { get; internal set; } = "000202";
+        public string BizType { get; set; } = "000202";
 
         /// <summary>
         /// 订单发送时间
@@ -53,7 +53,7 @@ namespace PayFx.Unionpay.Domain
         ///94：IC卡脚本通知 
         ///95：查询更新加密公钥证书
         /// </summary>
-        public string TxnType { get; internal set; } = "01";
+        public string TxnType { get; set; } = "01";
 
         /// <summary>
         /// 交易子类
@@ -61,6 +61,6 @@ namespace PayFx.Unionpay.Domain
         /// 03：分期付款
         /// </summary>
         [Required(ErrorMessage = "请设置交易子类")]
-        public string TxnSubType { get; internal set; } = "01";
+        public string TxnSubType { get; set; } = "01";
     }
 }
