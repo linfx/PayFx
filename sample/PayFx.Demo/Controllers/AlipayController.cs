@@ -63,6 +63,14 @@ namespace PayFx.Demo.Controllers
             return Redirect(response.Url);
         }
 
+        /// <summary>
+        /// App支付
+        /// </summary>
+        /// <param name="out_trade_no"></param>
+        /// <param name="subject"></param>
+        /// <param name="total_amount"></param>
+        /// <param name="body"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult AppPay(string out_trade_no, string subject, double total_amount, string body)
         {
